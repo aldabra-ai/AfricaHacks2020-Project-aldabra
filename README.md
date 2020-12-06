@@ -9,7 +9,7 @@ Public hospitals all over the world are often being flooded with patients that n
 
 # To contribute
  create folder('AfricaHacks2020...etc)
- clone codebase in folder
+ clone codebase to folder
  
  # for linux users
  ## Creat developement virtual Environment
