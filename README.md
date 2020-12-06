@@ -14,9 +14,13 @@ Public hospitals all over the world are often being flooded with patients that n
  # for linux users
  ## Creat developement virtual Environment
  cd git root folder: cd AfricaHacks2020-project-aldabra.../
+ 
  install python3 if not installed: sudo apt install python3
+ 
  install virtualenv: sudo apt install python3-virtualenv
+ 
  run **envcreate.sh**: ./envcreate.sh
+ 
  activate venv(note: activate-env not working yet so manual method adviced): source ../aldabra-env/bin/activate
    
  ## Install requirements
@@ -26,11 +30,14 @@ Public hospitals all over the world are often being flooded with patients that n
  from ./AfricaHacks2020-project-aldabra... folder/
   
  run script: cd aldabraai && ./migrate.sh
+ 
  manually: cd aldabraai && python manage.py makemigrations && python manage.py migrate
  
  ## run developement server to see if all worked well
  from ./aldabraai/(folder)
+ 
  run script: ./runserver.sh
+ 
  manually: python manage.py runserver
    
  
