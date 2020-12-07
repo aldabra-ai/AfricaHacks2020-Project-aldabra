@@ -1,0 +1,1 @@
+from .staticinfo import StaticAppInfo
