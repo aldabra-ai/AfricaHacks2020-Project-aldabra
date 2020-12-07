@@ -1,3 +1,6 @@
 from django.contrib import admin
+from .models import StaticAppInfo
 
-# Register your models here.
+@admin.register(StaticAppInfo)
+class StaticAppInfoAdmin(admin.ModelAdmin):
+    pass

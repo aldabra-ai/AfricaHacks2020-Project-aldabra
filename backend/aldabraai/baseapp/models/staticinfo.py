@@ -6,7 +6,7 @@ class StaticAppInfo(models.Model):
     app_name = models.CharField(max_length=150)
     webapp_url = models.URLField(max_length=50)
     date_founded = models.DateField()
-    logo = models.FileField(upload_to='')
+    logo = models.FileField(upload_to='', blank=True)
     #address
 
     def __str__(self):
