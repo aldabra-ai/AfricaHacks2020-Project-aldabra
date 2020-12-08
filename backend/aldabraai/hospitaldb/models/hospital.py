@@ -1,5 +1,5 @@
 from typing import Match
-from django.shortcuts import reverse
+from django.urls import reverse
 from django.db import models
 
 
@@ -93,14 +93,14 @@ class Room(models.Model):
         verbose_name = 'Hospital Room'
         verbose_name_plural = 'Hospital Rooms'
 
-    class Department(models.Model):
-        name = models.CharField(max_length=250, on_delete=models.CASCADE)
-        hospital = models.ForeignKey(Hospital, on_delete=models.CASCADE)
-        hod = models.ForeignKey(Physician, on_delete=models.CASCADE)
-        department_id = models.BigIntegerField()
-
-        def __str__(self):
-            return self.name
+   # class Department(models.Model):
+   #     name = models.CharField(max_length=250)
+   #    hospital = models.ForeignKey(Hospital, on_delete=models.CASCADE)
+   #     hod = models.ForeignKey(Physician, on_delete=models.CASCADE)
+   #     department_id = models.BigIntegerField()
+   #
+   #     def __str__(self):
+   #         return self.name
 
 
 
