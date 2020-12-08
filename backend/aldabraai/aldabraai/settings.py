@@ -40,7 +40,7 @@ INSTALLED_APPS = [
 
     # own apps
     'baseapp.apps.BaseappConfig',
-    'mainapi.apps.ApiConfig',
+    'hospitaldb.apps.HospitaldbConfig',
     'rest_framework',
 
     # corsheaders
@@ -88,25 +88,36 @@ WSGI_APPLICATION = 'aldabraai.wsgi.application'
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
 DATABASES = {
-   #'default': {
-   # #    'ENGINE': 'django.db.backends.sqlite3',
-   #     'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-   #     
-   #     },
+   'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        
+        },
 
-     'default': {
-            'ENGINE': 'djongo',
-            'NAME': 'aldabracluster',
-            'ENFORCE_SCHEMA': False,
-            'CLIENT': {
-                'host': 'mongodb+srv://aldabraai:passcodealdabraaidb@aldabracluster.57cqg.mongodb.net/aldabracluster?retryWrites=true&w=majority',
-                'port': 27017,
-                'username': 'aldabraai',
-                'password': 'passcodealdabraaidb',
-                'authSource': 'aldabracluster',
-                'authMechanism': 'SCRAM-SHA-1'
-            }
-     }
+    #  'default': {
+    #         'ENGINE': 'djongo',
+    #         'NAME': 'aldabracluster',
+    #         'ENFORCE_SCHEMA': False,
+    #         'CLIENT': {
+    #             'host': 'mongodb+srv://aldabraai:passcodealdabraaidb@aldabracluster.57cqg.mongodb.net/aldabracluster?retryWrites=true&w=majority',
+    #             'port': 27017,
+    #             'username': 'aldabraai',
+    #             'password': 'passcodealdabraaidb',
+    #             'authSource': 'aldabracluster',
+    #             'authMechanism': 'SCRAM-SHA-1'
+    #         },
+
+    #         'LOGGING': {
+    #             'version': 1,
+    #             'loggers': {
+    #                 'djongo': {
+    #                     'level': 'DEBUG',
+    #                     'propagate': False,                        
+    #                 }
+    #             },
+    #          },
+
+    # }
 }
 
 
