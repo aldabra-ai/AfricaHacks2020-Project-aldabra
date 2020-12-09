@@ -9,6 +9,7 @@ class Patient(models.Model):
     phone = models.IntegerField()
     pcp = models.ForeignKey(Doctor, on_delete=models.CASCADE)
     family_phone = models.IntegerField(blank=True)
+    
 
     def __str__(self):
         return self.name
