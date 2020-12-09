@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     # own apps
     'baseapp.apps.BaseappConfig',
     'hospitaldb.apps.HospitaldbConfig',
+    'patient.apps.PatientConfig',
     'rest_framework',
 
     # corsheaders

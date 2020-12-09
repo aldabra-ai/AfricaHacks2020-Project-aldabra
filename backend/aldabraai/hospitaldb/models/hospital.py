@@ -23,11 +23,11 @@ class Hospital(models.Model):
     ]
     
     HOSPITALITY_RANK = [
-        (1, 'ONE STAR'),
-        (2, 'TWO STAR'),
-        (3, 'THREE STAR'),
-        (4, 'FOUR STAR'),
-        (5, 'FIVE STAR'),
+        ('ONE', 1),
+        ('TWO', 2),
+        ('THREE', 3),
+        ('FOUR', 4),
+        ('FIVE', 5),
     ]
 
     name = models.CharField(max_length=300, help_text='Enter hospital name')
@@ -73,7 +73,7 @@ class Room(models.Model):
     ]
 
     hospital = models.ForeignKey(Hospital, on_delete=models.CASCADE)
-    room_name = models.CharField(max_length=250)
+    room_name = models.CharField(max_length=250, blank=True)
     room_number = models.IntegerField(primary_key=True)
     room_type = models.CharField(max_length=100)
     block = models.ForeignKey(Block, on_delete=models.CASCADE)
