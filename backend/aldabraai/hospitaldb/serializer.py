@@ -13,7 +13,7 @@ class HospitalSerializer(serializers.ModelSerializer):
             ]
 
 class BlockSerializer(serializers.ModelSerializer):
-    hospital = serializers.PrimaryKeyRelatedField(many=True, queryset=Hospital.objects.all())
+    hospital = serializers.PrimaryKeyRelatedField(read_only=True)
     class Meta:
         model = Block
         fields = [
@@ -24,8 +24,8 @@ class BlockSerializer(serializers.ModelSerializer):
         ]
 
 class RoomSerializer(serializers.ModelSerializer):
-    hospital = serializers.PrimaryKeyRelatedField(many=True, queryset=Hospital.objects.all())
-    block = serializers.PrimaryKeyRelatedField(many=True, queryset=Block.objects.all())
+    hospital = serializers.PrimaryKeyRelatedField(read_only=True)
+    block = serializers.PrimaryKeyRelatedField(read_only=True)
     class Meta:
         model = Room
         fields = [
@@ -38,15 +38,14 @@ class RoomSerializer(serializers.ModelSerializer):
         ]
 
 class DoctorSerializer(serializers.ModelSerializer):
-    works_in = serializers.PrimaryKeyRelatedField(many=True, queryset=Hospital.objects.all())
-    trained_in = serializers.StringRelatedField(many=True)
+    works_in = serializers.PrimaryKeyRelatedField(read_only=True)
+    trained_in = serializers.StringRelatedField(many=True, read_only=True)
     class Meta:
         model = Doctor
         fields = [
                 'doctor_id', 
                 'name', 
                 'works_in', 
-                'works_in_id',
                 'position', 
                 'trained_in', 
                 'cert_date', 
@@ -59,10 +58,11 @@ class SpecialitySerializer(serializers.ModelSerializer):
         fields = ['name', 'treatment']
 
 class NurseSerializer(serializers.ModelSerializer):
-    current_employer = serializers.PrimaryKeyRelatedField(many=True, queryset=Hospital.objects.all())
+    current_employer = serializers.PrimaryKeyRelatedField(read_only=True)
     class Meta:
         model = Nurse
         fields = [
+
             'nurse_id',
             'name',
             'position',
@@ -71,9 +71,9 @@ class NurseSerializer(serializers.ModelSerializer):
         ]
 
 class AppointmentSerializer(serializers.ModelSerializer):
-    physician = serializers.PrimaryKeyRelatedField(many=True, queryset=Doctor.objects.all())
-    hospital = serializers.PrimaryKeyRelatedField(many=True, queryset=Hospital.objects.all())
-    prep_nurse = serializers.PrimaryKeyRelatedField(many=True, queryset=Nurse.objects.all())
+    physician = serializers.PrimaryKeyRelatedField(read_only=True)
+    hospital = serializers.PrimaryKeyRelatedField(read_only=True)
+    prep_nurse = serializers.PrimaryKeyRelatedField(read_only=True)
     class  Meta:
         model = Appointment
         fields = [

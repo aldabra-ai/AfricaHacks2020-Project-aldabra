@@ -97,9 +97,14 @@ DATABASES = {
 
       'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'OPTIONS': {
-            'read_default_file': '/etc/mysql/my.cnf',
-        },
+        'NAME': 'aldabraai',
+        'USER': 'aldabraadmin',
+        'PASSWORD': 'aldabradb',
+        'HOST': 'mysql-16530-0.cloudclusters.net',
+        'PORT': 16530,
+        #'OPTIONS': {
+         #   'read_default_file': '/etc/mysql/my.cnf',
+        #},
       }
 
     #  'default': {

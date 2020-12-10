@@ -6,8 +6,8 @@ from hospitaldb.models import Doctor
 from django.contrib.auth.models import User
 
 
-class UserSerializer(serializers.ModelSerializer):
-    pa
+#class UserSerializer(serializers.ModelSerializer):
+
 
 class PatientSerializer(serializers.ModelSerializer):
     pcp = serializers.PrimaryKeyRelatedField(many=True, queryset=Doctor.objects.all())
