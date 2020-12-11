@@ -1,6 +1,9 @@
 from django.db import models
 from .hospital import Hospital
 
+class RegisteredNurseManager(models.Manager):
+    def get_queryset(self):
+        return super().get_queryset().filter(registered=True)
 
 
 class Nurse(models.Model):

@@ -1,0 +1,11 @@
+
+
+<h1>Search Results</h1>
+
+<ul>
+  {% for doctor in object_list %}
+    <li>
+      <a href="{{ doctor.get_absolute_url }}">{{ doctor.name }}, {{ doctor.trained_in }}</a> 
+    </li>
+  {% endfor %}
+</ul>

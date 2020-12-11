@@ -1,4 +1,3 @@
-from typing import Match
 from django.urls import reverse
 from django.db import models
 
@@ -34,7 +33,7 @@ class Hospital(models.Model):
     address = models.CharField(max_length=450, help_text='hospital address')
     hospital_type = models.CharField(max_length=30, choices=HOSPITAL_TYPE)
     rank = models.CharField(max_length=20, choices=HOSPITALITY_RANK)
-    slug = models.SlugField()
+    #slug = models.SlugField()
     objects = models.Manager()
     special_clinics = SpecialClinicManager()
     traditional_hospitals = TraditionalHospitalManager()
@@ -47,7 +46,7 @@ class Hospital(models.Model):
         return self.name
 
     def get_absolute_url(self):
-        return reverse("hospital-detail", kwargs={"pk": self.pk})
+        return reverse("aldabra-hospital-dashboard", kwargs={"pk": self.pk})
     
 
     class Meta:

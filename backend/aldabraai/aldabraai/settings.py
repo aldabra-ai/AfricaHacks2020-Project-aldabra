@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'baseapp.apps.BaseappConfig',
     'hospitaldb.apps.HospitaldbConfig',
     'patient.apps.PatientConfig',
+    'queuein.apps.QueueinConfig',
     'rest_framework',
 
     # corsheaders
@@ -69,7 +70,7 @@ ROOT_URLCONF = 'aldabraai.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -171,3 +172,19 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+
+MEDIA_URL = '/media/'
+
+
+
+# SOCIAL_AUTH_TRAILING_SLASH = False  # Remove trailing slash from routes
+# SOCIAL_AUTH_AUTH0_DOMAIN = 'dev-48txv613.us.auth0.com'
+# SOCIAL_AUTH_AUTH0_KEY = '8Ap5d0rV0fl6s8DyzwaV4xSoYyiaihbK'
+# SOCIAL_AUTH_AUTH0_SECRET = 'YOUR_CLIENT_SECRET'
+
+
+# SOCIAL_AUTH_AUTH0_SCOPE = [
+#     'openid',
+#     'profile',
+#     'email'
+# ]
