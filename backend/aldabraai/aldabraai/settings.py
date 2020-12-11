@@ -45,6 +45,9 @@ INSTALLED_APPS = [
     'queuein.apps.QueueinConfig',
     'rest_framework',
 
+    # authentication app
+    'auth0login.apps.Auth0LoginConfig',
+
     # corsheaders
     'corsheaders',
 ]
@@ -62,6 +65,8 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+AUTH_USER_MODEL = 'auth0login.User'
 
 CORS_ORIGIN_WHITELIST = ['https://localhost:3000']
 
