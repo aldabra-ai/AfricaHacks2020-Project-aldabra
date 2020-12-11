@@ -1,13 +1,14 @@
+from django.conf import settings
 from .doctor import Doctor
 from django.db import models
 from django.urls import reverse
 #from patient.models import Patient
 from .nurse import Nurse
 from .hospital import Hospital
-#from django.contrib.auth import  User
+from django.conf import settings
 
 class Appointment(models.Model):
-    #user = models.ForeignKey('User', related_name='appointments', on_delete=models.CASCADE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     #appointment_id = models.BigIntegerField()
     patient_name = models.CharField(max_length=250)
     phone = models.CharField(max_length=15, blank=True)

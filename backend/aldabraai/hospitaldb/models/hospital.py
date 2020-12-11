@@ -1,5 +1,6 @@
 from django.urls import reverse
 from django.db import models
+from django.conf import settings
 
 
 class TraditionalHospitalManager(models.Manager):
@@ -29,6 +30,7 @@ class Hospital(models.Model):
         ('FIVE', 5),
     ]
 
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     name = models.CharField(max_length=300, help_text='Enter hospital name')
     address = models.CharField(max_length=450, help_text='hospital address')
     hospital_type = models.CharField(max_length=30, choices=HOSPITAL_TYPE)
@@ -71,6 +73,7 @@ class Room(models.Model):
         ('UA', 'Unavailable')
     ]
 
+    
     hospital = models.ForeignKey(Hospital, on_delete=models.CASCADE)
     room_name = models.CharField(max_length=250, blank=True)
     room_number = models.IntegerField(primary_key=True)

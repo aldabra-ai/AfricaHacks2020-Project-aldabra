@@ -24,3 +24,5 @@ djongo >= 0.1
 sqlparse == 0.2.4
 dnspython >= 0.2
 mysqlclient >= 2.0
+python-jose  >= 3.0.0
+social-auth-app-django >= 3.0.0

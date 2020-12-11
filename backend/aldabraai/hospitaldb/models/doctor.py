@@ -1,6 +1,7 @@
 from django.db import models
 from .hospital import Hospital
 from django.urls import reverse
+from django.conf import settings
 
 
 class Speciality(models.Model):
@@ -14,6 +15,7 @@ class Speciality(models.Model):
         verbose_name_plural = 'Specialities'
 
 class Doctor(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     doctor_id = models.BigIntegerField()
     name = models.CharField(max_length=250)
     works_in = models.ForeignKey(Hospital, on_delete=models.CASCADE)
