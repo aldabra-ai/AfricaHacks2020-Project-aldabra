@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'patient.apps.PatientConfig',
     'queuein.apps.QueueinConfig',
     'rest_framework',
+    'dashboard.apps.DashboardConfig',
 
     # authentication app
     'auth0login.apps.Auth0LoginConfig',
@@ -184,9 +185,9 @@ MEDIA_URL = '/media/'
 # Auth0 settings
 
 SOCIAL_AUTH_TRAILING_SLASH = False  # Remove trailing slash from routes
-SOCIAL_AUTH_AUTH0_DOMAIN = 'dev-sws-01.us.auth0.com'
-SOCIAL_AUTH_AUTH0_KEY = 'dxnWgtTK55FuiFjXasuIhct2gOarMmCU'
-SOCIAL_AUTH_AUTH0_SECRET = '7AeVWmtDL6J-4J-FOgpLGDbHRrdsHoLU4RqKIfjpb7kyDfxJIEweHT7B1OazrXM4'
+SOCIAL_AUTH_AUTH0_DOMAIN = 'dev-48txv613.us.auth0.com'
+SOCIAL_AUTH_AUTH0_KEY = '8Ap5d0rV0fl6s8DyzwaV4xSoYyiaihbK'
+SOCIAL_AUTH_AUTH0_SECRET = 'uWtOby54wUJkirebFKx8-arbWgOL0nE5PPByPIlHR0r0tOjQTQPIxryJTkht06ao'
 
 
 SOCIAL_AUTH_AUTH0_SCOPE = [

@@ -1,10 +1,10 @@
 from django.shortcuts import render, redirect
 
-def index(request):
+def login_view(request):
     user = request.user
     if user.is_authenticated:
-        return redirect('create-patient-profile')
+        return redirect('dashboard')
     else:
-        return render(request, 'index.html')
+        return render(request, 'hospitaldb/dashbaord')
 
 # Create your views here.
