@@ -24,7 +24,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('hospital/', include('hospitaldb.urls')),
     path('patient/', include('patient.urls')),
-    path('', include('social_django.urls')),
+    path('', include('auth0login.urls'))
 ]
 
 if settings.DEBUG:

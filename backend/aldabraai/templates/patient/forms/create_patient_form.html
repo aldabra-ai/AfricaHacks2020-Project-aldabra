@@ -9,7 +9,7 @@
     <h1> Create A Patient Profile</h1>
 
     <form method="post">{% csrf_token %}
-        {{ form.as_p }}
+        {{ patient_form.as_p }}
         <input type="submit" value="Save">
     </form>
 </body>
