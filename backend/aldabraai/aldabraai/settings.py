@@ -126,20 +126,20 @@ DATABASES = {
                  'password': 'passcodealdabraaidb',
                  'authSource': 'aldabracluster',
                  'authMechanism': 'SCRAM-SHA-1'
-             }
-      },
+             },
+      
 
-    #         'LOGGING': {
-    #             'version': 1,
-    #             'loggers': {
-    #                 'djongo': {
-    #                     'level': 'DEBUG',
-    #                     'propagate': False,                        
-    #                 }
-    #             },
-    #          },
+            'LOGGING': {
+                'version': 1,
+                 'loggers': {
+                     'djongo': {
+                         'level': 'DEBUG',
+                         'propagate': False,                        
+                     }
+                 },
+              },
 
-    # }
+     }
 }
 
 
