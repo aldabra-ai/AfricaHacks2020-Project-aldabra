@@ -1,14 +1,18 @@
+{% extends 'base/index.html' %}
+{% load static %}
 
-<div class="logged-in-box auth0-box logged-in">
-    <h1 id="logo"><img src="//cdn.auth0.com/samples/auth0_logo_final_blue_RGB.png" /></h1>
+{% block content %}
+<link rel="stylesheet" href="{% static 'base/css/general.css' %}">
+<link rel="stylesheet" href="{% static 'base/css/landing.css' %}">
+<link rel="stylesheet" href="{% static 'screensize/screensize.css' %}">
+
+{% block section-cover %}
+<section class="cover" style="background-color: rgba(38, 35, 192, 0.966); color: white;">
     <img class="avatar" src="{{ auth0User.extra_data.picture }}"/>
-    <h2>Welcome {{ user.username }}</h2>
+    <p class="text-center">Welcome {{ user.username }}</p>
+</section>
 
-    <h1>Your Patient Profile</h1>
-    <h2>Name: {{patient.name}}</h2>
-    <h2>Address: {{patient.address}}</h2>
-    <h2>Phone: {{patient.phone}}</h2>
-
-    <a href="{% url 'logout' %}">logout</a>
-    <a href="{% url 'edit_profile' %}">edit your priofile</a>
+    <a href="{% url 'edit_profile' %}">edit your profile</a>
 </div>
+{% endblock section-cover %}
+{% endblock content %}

@@ -1,0 +1,19 @@
+{% extends 'base/index.html' %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+<link rel="stylesheet" href="{% static 'base/css/general.css' %}">
+<link rel="stylesheet" href="{% static 'base/css/landing.css' %}">
+<link rel="stylesheet" href="{% static 'screensize/screensize.css' %}">
+
+
+{% block section-cover %}
+<section class="cover" style="background-color: rgba(38, 35, 192, 0.966); color: white;">
+    <h1 class="text-center">{{ staticinfo.app_name }}</h1>
+    <p class="text-center">{{ staticinfo.tagline }}</p>
+
+   <div class="text-center"><button class="start-button"><a href="login/auth0">Start</a></button></div>
+</section>
+{% endblock section-cover %}
+{% endblock content %}

@@ -12,7 +12,19 @@ from django.views.generic import TemplateView,CreateView
 
 
 class IndexView(TemplateView):
+    model = StaticAppInfo
     template_name = 'base/index.html'
+    context_object_name = 'staticinfo'
+
+class LandingPage(TemplateView):
+    template_name = 'base/landingpage.html'
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        context['staticinfo'] = StaticAppInfo.objects.get(pk=1)
+
+        return context
 
 
 # @api_view(['GET','POST'])

@@ -9,7 +9,7 @@ def login_view(request):
     if user.is_authenticated: 
         return redirect('dashboard')
     else:
-        return render(request, 'hospitaldb/dashbaord')
+        return render(request, 'dashboard/dashbaord.html')
 
 # Create your views here.
 
