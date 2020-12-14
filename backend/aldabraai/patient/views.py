@@ -31,6 +31,7 @@ class PatientDetail(DetailView):
     #def get_context_data(self, **kwargs)
         #return super().get_context_data(**kwargs)
 
+# Update patient profile
 @login_required
 def edit_profile(request):
     if request.method == 'POST':
@@ -54,11 +55,6 @@ def edit_profile(request):
                   {'patient_form': patient_form})
 
 
-# class UpdatePatientProfile(UpdateView):
-#     model = Patient
-#     fields = ['name', 'address', 'phone', 'family_phone']
-#     template_name = 'patient/forms/update_patient_form.html'
-#     success_url = reverse_lazy('patient-dashboard')
 
 class DeletePatientProfile(DeleteView):
     model = Patient

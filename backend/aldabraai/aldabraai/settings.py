@@ -113,20 +113,21 @@ DATABASES = {
         #'OPTIONS': {
          #   'read_default_file': '/etc/mysql/my.cnf',
         #},
-      }
+      },
 
-    #  'default': {
-    #         'ENGINE': 'djongo',
-    #         'NAME': 'aldabracluster',
-    #         'ENFORCE_SCHEMA': False,
-    #         'CLIENT': {
-    #             'host': 'mongodb+srv://aldabraai:passcodealdabraaidb@aldabracluster.57cqg.mongodb.net/aldabracluster?retryWrites=true&w=majority',
-    #             'port': 27017,
-    #             'username': 'aldabraai',
-    #             'password': 'passcodealdabraaidb',
-    #             'authSource': 'aldabracluster',
-    #             'authMechanism': 'SCRAM-SHA-1'
-    #         },
+      'fallback': {
+             'ENGINE': 'djongo',
+             'NAME': 'aldabracluster',
+             'ENFORCE_SCHEMA': False,
+             'CLIENT': {
+                'host': 'mongodb+srv://aldabraai:passcodealdabraaidb@aldabracluster.57cqg.mongodb.net/aldabracluster?retryWrites=true&w=majority',
+                 'port': 27017,
+                 'username': 'aldabraai',
+                 'password': 'passcodealdabraaidb',
+                 'authSource': 'aldabracluster',
+                 'authMechanism': 'SCRAM-SHA-1'
+             }
+      },
 
     #         'LOGGING': {
     #             'version': 1,

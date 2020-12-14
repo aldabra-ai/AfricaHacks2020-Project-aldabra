@@ -3,10 +3,14 @@ from django.contrib.auth import logout as log_out
 from django.conf import settings
 from django.http import HttpResponseRedirect
 from urllib.parse import urlencode
+from patient.models import Patient
 
+
+# primary login view
 def login_view(request):
     user = request.user
-    if user.is_authenticated: 
+    if user.is_authenticated:
+        created =  Patient.objects.get_or_create(user=user)    # creates a patient profile if not found
         return redirect('dashboard')
     else:
         return render(request, 'dashboard/dashbaord.html')
