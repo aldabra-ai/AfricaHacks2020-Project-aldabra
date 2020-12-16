@@ -4,7 +4,7 @@ from django.shortcuts import render
 # from rest_framework.response import Response
 # from rest_framework.parsers import JSONParser
 from .models import StaticAppInfo
-from .serializers import StaticinfoSerializer
+#from .serializers import StaticinfoSerializer
 from django.views.generic import TemplateView,CreateView
 
 

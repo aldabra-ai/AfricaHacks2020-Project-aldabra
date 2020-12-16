@@ -18,7 +18,7 @@ def dashboard(request):
     #      pass
     #  else:
     #      Patient.objects.create(user=user) 
-    patient_profile = Patient.objects.get(user=user)
+    patient_profile = Patient.objects.get_or_create(user=user)
 
     return render(request, 'dashboard/dashboard.html', {
         'auth0User': auth0user,

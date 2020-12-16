@@ -40,6 +40,12 @@ def edit_profile(request):
             data=request.POST)
 
         if patient_form.is_valid():
+
+            name = patient_form.cleaned_data['name']
+            address = patient_form.cleaned_data['address']
+            phone = patient_form.cleaned_data['phone']
+            family_phone = patient_form.cleaned_data['family_phone']
+
             patient_form.save()
             messages.success(request, 'Profile updated successfully')
             return redirect('dashboard')
