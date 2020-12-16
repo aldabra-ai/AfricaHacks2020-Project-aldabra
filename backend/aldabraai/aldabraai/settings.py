@@ -43,8 +43,11 @@ INSTALLED_APPS = [
     'hospitaldb.apps.HospitaldbConfig',
     'patient.apps.PatientConfig',
     'queuein.apps.QueueinConfig',
-    'rest_framework',
     'dashboard.apps.DashboardConfig',
+    'appointment.apps.AppointmentConfig',
+
+    # Api framework
+    'rest_framework',
 
     # authentication app
     'auth0login.apps.Auth0LoginConfig',
