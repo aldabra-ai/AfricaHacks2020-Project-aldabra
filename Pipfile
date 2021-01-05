@@ -1,0 +1,32 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+pygments = "*"
+django-filter = "*"
+django-bleach = "*"
+httpie = "*"
+django-oauth-toolkit = "*"
+django-cors-middleware = "*"
+coverage = ">=0.1"
+cryptography = ">=2.8"
+djangorestframework = "*"
+django-cors-headers = "*"
+drf-jwt = "*"
+requests = "*"
+djongo = "*"
+sqlparse = "*"
+dnspython = "*"
+mysqlclient = "*"
+python-jose = "*"
+social-auth-app-django = "*"
+Django = "*"
+Pillow = "*"
+PyJWT = "*"
+django-rest-knox = "*"
+[dev-packages]
+
+[requires]
+python_version = "3.8"

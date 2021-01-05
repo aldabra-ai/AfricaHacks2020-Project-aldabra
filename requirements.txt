@@ -1,11 +1,5 @@
 #django~=2.2.7
 django >= 3.0
-django-bootstrap4 >= 1.1.1
-Markdown  >= 3.2.1
-django-crispy-forms >= 1.0
-react >= 4.0
-falcon-pagination >= 0.0.1
-font-font-awesome >= 0.0.2
 django-markup >= 1.0
 Pillow >= 7.2.0
 pygments >= 0.1
