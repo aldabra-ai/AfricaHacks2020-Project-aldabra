@@ -26,6 +26,8 @@ Django = "*"
 Pillow = "*"
 PyJWT = "*"
 django-rest-knox = "*"
+psycopg2 = "*"
+
 [dev-packages]
 
 [requires]

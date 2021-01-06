@@ -30,6 +30,7 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
+
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -38,12 +39,15 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    ## OWN APPS
-    'frontend',
-    'authend',
+    ## OWN APPS 
+    # Auth
+    'authend.apps.AuthendConfig',
+    # OWN APPS
+    'frontend.apps.FrontendConfig',
 
     ## API FRAMEWORK
-    'rest-framework',
+    'rest_framework',
+
 ]
 
 MIDDLEWARE = [
@@ -55,6 +59,8 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+AUTH_USER_MODEL = 'authend.User'
 
 ROOT_URLCONF = 'aldabraai.urls'
 
@@ -81,20 +87,40 @@ WSGI_APPLICATION = 'aldabraai.wsgi.application'
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
 DATABASES = {
+    # SQLite3
+
     'dev-fallback': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     },
-    
-    'dev-database': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': '',
-        'PASSWORD': '',
+
+    # MySQL
+
+    # 'dev-database': {
+    #     'ENGINE': 'django.db.backends.mysql',
+    #     'NAME': '',
+    #     'PASSWORD': '',
+    #     'HOST': '',
+    #     'PORT': '',
+    #     'OPTIONS': {
+    #         'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
+    #     },
+    # }
+
+    # postgreSQL
+
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+
+        'NAME': 'aldabradb',
+
+        'USER': 'krummitz',
+
+        'PASSWORD': 'passcodepglocaladmin',
+
         'HOST': '',
-        'PORT': '',
-        'OPTIONS': {
-            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
-        },
+
+        'PORT': '5432',
     }
 
 }
