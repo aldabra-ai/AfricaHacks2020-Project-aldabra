@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'authend.apps.AuthendConfig',
     # OWN APPS
     'frontend.apps.FrontendConfig',
+    'base.apps.BaseConfig',
 
     ## API FRAMEWORK
     'rest_framework',
