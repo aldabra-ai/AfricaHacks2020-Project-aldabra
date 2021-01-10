@@ -1,0 +1,2 @@
+export const GET_SITE_INFO = "GET_SITE_INFO";
+export const GET_ACTIVE_FEATURES = "GET_ACTIVE_FEATURES";

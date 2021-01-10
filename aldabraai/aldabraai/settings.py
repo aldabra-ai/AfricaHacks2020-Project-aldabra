@@ -43,8 +43,12 @@ INSTALLED_APPS = [
     # Auth
     'authend.apps.AuthendConfig',
     # OWN APPS
-    'frontend.apps.FrontendConfig',
     'base.apps.BaseConfig',
+    'patient.apps.PatientConfig',
+    'doctor.apps.DoctorConfig',
+    'hospitaldb.apps.HospitaldbConfig',
+    'dashboard.apps.DashboardConfig',
+    'frontend.apps.FrontendConfig',
 
     ## API FRAMEWORK
     'rest_framework',

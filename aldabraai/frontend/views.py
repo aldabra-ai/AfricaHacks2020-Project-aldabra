@@ -5,4 +5,4 @@ class IndexPage(TemplateView):
     template_name = 'frontend/index.html'
 
 class LandingPage(TemplateView):
-    template_name = 'frontend/landing.html'
+    template_name = 'frontend/home/landing.html'

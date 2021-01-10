@@ -10,8 +10,8 @@ class StaticSiteInfo(models.Model):
     current_date = models.DateField(auto_now=True)
 
 
-    def __str__(self):
-        self.company_name
+    # def __str__(self):
+    #     self.app_name
 
     class Meta:
         verbose_name = 'Static Website Information'

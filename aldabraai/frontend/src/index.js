@@ -1,2 +1,2 @@
-import App from './components/App';
+import RootTemplate from './components/RootTemplate';
 

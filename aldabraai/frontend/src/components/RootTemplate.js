@@ -1,28 +1,31 @@
 import React, { Component, Fragment } from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
+import store from '../store';
 
 // import layout components
 import NavBar from './layout/Nav'
 import Footer from './layout/Footer'
 
-class App extends Component {
+class RootTemplate extends Component {
     render() {
         return(
-            <Fragment>
-              <NavBar />
-              <h1> React + Django Integration Test </h1>
-              <Footer />
-            </Fragment>
+            <Provider store={store}>
+                <Fragment>
+                    <NavBar />
+                    
+                    <Footer />
+                </Fragment>
+            </Provider>
         ); 
     }
 }
 
 ReactDOM.render(
     <React.StrictMode>
-        <App />
+        <RootTemplate />
     </React.StrictMode>,
     document.getElementById('root')
   );
 
-export default App;
+export default RootTemplate;

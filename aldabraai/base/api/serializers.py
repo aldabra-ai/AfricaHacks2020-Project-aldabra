@@ -5,12 +5,7 @@ from ..models import StaticSiteInfo, Feature, Sponsor
 class SiteInfoSerializer(serializers.ModelSerializer):
     class Meta:
         model = StaticSiteInfo
-        fields = [
-            'company_name',
-            'app_name','app_summary',
-            'tag_line','date_founded',
-            'current_date'
-            ]
+        fields = '__all__'
 
 class FeatureSerializer(serializers.ModelSerializer):
     class Meta:
