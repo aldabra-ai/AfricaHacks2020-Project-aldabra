@@ -44,8 +44,7 @@ INSTALLED_APPS = [
     'authend.apps.AuthendConfig',
     # OWN APPS
     'base.apps.BaseConfig',
-    'patient.apps.PatientConfig',
-    'doctor.apps.DoctorConfig',
+    'accounts.apps.AccountsConfig',
     'hospitaldb.apps.HospitaldbConfig',
     'dashboard.apps.DashboardConfig',
     'frontend.apps.FrontendConfig',
