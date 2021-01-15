@@ -3,4 +3,4 @@ from django.apps import AppConfig
 
 class AccountsConfig(AppConfig):
     name = 'accounts'
-    verbose_name = 'User Accounts and Profiles'
+    verbose_name = 'User Accounts and Profiles/API'

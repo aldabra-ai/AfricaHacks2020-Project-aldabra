@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 
 
 INSTALLED_APPS = [
+    ## DJANGO CORE(s)
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -39,14 +40,20 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    ## OWN APPS 
-    # Auth
+    ## OWN APP(s) 
+    # AUTH END
     'authend.apps.AuthendConfig',
-    # OWN APPS
+    # COMMON
     'base.apps.BaseConfig',
     'accounts.apps.AccountsConfig',
     'hospitaldb.apps.HospitaldbConfig',
+    # FEATURE(s)
     'dashboard.apps.DashboardConfig',
+    'appointment.apps.AppointmentConfig',
+    'queuein.apps.QueueinConfig',
+    'mhealth.apps.MhealthConfig',
+    'search.apps.SearchConfig',
+    # FRONT END
     'frontend.apps.FrontendConfig',
 
     ## API FRAMEWORK
@@ -64,8 +71,10 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+## REFRENCING USER MODEL
 AUTH_USER_MODEL = 'authend.User'
 
+## ROOT URL
 ROOT_URLCONF = 'aldabraai.urls'
 
 TEMPLATES = [
