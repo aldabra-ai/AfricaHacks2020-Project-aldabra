@@ -186,3 +186,11 @@ MEDIA_URL = '/media/'
 
 STATIC_URL = '/static/'
 
+
+
+
+
+## Authentication Settings
+
+# Backend
+

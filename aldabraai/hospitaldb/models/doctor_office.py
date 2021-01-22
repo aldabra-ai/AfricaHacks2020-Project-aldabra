@@ -4,7 +4,8 @@ from .hospital import Hospital
 
 
 class DoctorOffice(models.Model):
-    office_owner = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.PROTECT)
+    office_owner = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.PROTECT, verbose_name='Office Owner')
+    office_name = models.CharField(max_length=400)
     hospital = models.ForeignKey(Hospital, on_delete=models.CASCADE)
     first_consultation_fee = models.FloatField()
     follow_up_cons_fee = models.FloatField()
@@ -15,7 +16,7 @@ class DoctorOffice(models.Model):
     zip_code = models.CharField(max_length=10) 
 
     def __str__(self):
-        return self.owner
+        return self.office_name
 
     class Meta:
          verbose_name = "Doctor's Office"

@@ -12,7 +12,7 @@ class UserCreationForm(forms.ModelForm):
 
     class Meta:
         model = User
-        fields = ('email','first_name', 'last_name', 'date_of_birth', 'profile_type')#
+        fields = ('email','identifier','first_name', 'last_name', 'date_of_birth', 'profile_type')
 
     def clean_password2(self):
 
@@ -28,7 +28,7 @@ class UserCreationForm(forms.ModelForm):
         user.set_password(self.cleaned_data['password1'])
         if commit:
             user.save()
-        return User
+        return user
 
 
 class UserChangeForm(forms.ModelForm):
@@ -37,11 +37,11 @@ class UserChangeForm(forms.ModelForm):
 
     class Meta:
         model = User
-        fields = ('email','first_name', 'last_name', 'date_of_birth', 'profile_type','password','is_active','is_admin')
+        fields = ('email','identifier','first_name', 'last_name', 'date_of_birth', 'profile_type','password','is_active','is_admin', 'is_doctor','is_patient')
 
-        def clean_password(self):
+    def clean_password(self):
 
-            return self.initial['password']
+        return self.initial['password']
 
 
 
@@ -55,20 +55,20 @@ class UserAdmin(BaseUserAdmin):
     list_filter = ('is_admin',)
     fieldsets = (
         (None, {'fields': ('email', 'password')}),
-        ('Personal Info', {'fields': ('first_name', 'last_name', 'date_of_birth',)}),
-        ('Permissions', {'fields': ('is_admin',)}),
+        ('Personal Info', {'fields': ('identifier','first_name', 'last_name', 'date_of_birth',)}),
+        ('Permissions', {'fields': ('is_admin', 'is_doctor', 'is_patient')}),
     )
 
 
     add_fieldsets = (
         (None, {
             'classes': ('wide',),
-            'fields': ('email','first_name', 'last_name', 'date_of_birth', 'profile_type','password1', 'password2'),
+            'fields': ('email','identifier','first_name', 'last_name', 'date_of_birth', 'profile_type','password1', 'password2'),
         }),
     )
 
-    search_fields = ('email','username','first_name','profile_type')
-    ordering = ('email','username','profile_type',)
+    search_fields = ('email','identifier','first_name','profile_type')
+    ordering = ('email','identifier','profile_type',)
     filter_horizontal = ()
 
 
