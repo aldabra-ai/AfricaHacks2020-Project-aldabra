@@ -20,10 +20,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '@fats@v7c5ss%#z8rx801@*zqpjy16_zap5hl+kwjv6qkvo$*k'
+SECRET_KEY = '***'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = bool
 
 ALLOWED_HOSTS = []
 
@@ -100,42 +100,12 @@ WSGI_APPLICATION = 'aldabraai.wsgi.application'
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
 DATABASES = {
-    # SQLite3
+    # # SQLite3
 
-    'dev-fallback': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    },
-
-    # MySQL
-
-    # 'dev-database': {
-    #     'ENGINE': 'django.db.backends.mysql',
-    #     'NAME': '',
-    #     'PASSWORD': '',
-    #     'HOST': '',
-    #     'PORT': '',
-    #     'OPTIONS': {
-    #         'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
-    #     },
-    # }
-
-    # postgreSQL
-
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-
-        'NAME': 'aldabradb',
-
-        'USER': 'krummitz',
-
-        'PASSWORD': 'passcodepglocaladmin',
-
-        'HOST': '',
-
-        'PORT': '5432',
-    }
-
+    # 'dev-fallback': {
+    #     'ENGINE': 'django.db.backends.sqlite3',
+    #     'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    # },   
 }
 
 
@@ -175,12 +145,6 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
-# PRODUCTION
-# MEDIA_ROOT = '' 
-
-
-# DEVELOPMENT
-#MEDIA_ROOT = 'media'
 
 MEDIA_URL = '/media/'
 
@@ -189,8 +153,15 @@ STATIC_URL = '/static/'
 
 
 
-
 ## Authentication Settings
 
 # Backend
 
+
+
+## EMAIL SERVICES
+EMAIL_HOST = '******'
+EMAIL_PORT = '******'
+EMAIL_USE_SSL = '******'
+EMAIL_HOST_USER = '******'
+EMAIL_HOST_PASSWORD = '******'
