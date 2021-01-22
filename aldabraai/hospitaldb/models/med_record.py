@@ -16,7 +16,7 @@ class MedicalRecord(models.Model):
         ('NIM', 'NOT IMMUNE')
     ]
 
-    #user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    owner = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.PROTECT)
     first_name = models.CharField(max_length=150)
     last_name = models.CharField(max_length=150)
     phone_number = models.CharField(max_length=20)
@@ -33,7 +33,12 @@ class MedicalRecord(models.Model):
     had_hep_b = models.BooleanField('Had Hapatitis B?')
     medical_p_list = models.TextField('Medical Problems')
     created = models.DateTimeField(auto_now_add=True)
-    created_by = models.OneToOneField(Hospital)
+    created_by = models.OneToOneField(Hospital, on_delete=models.PROTECT)
 
     def __str__(self):
         self.first_name
+
+    class Meta:
+        ordering = ['first_name']
+        verbose_name = 'Medical Record'
+        verbose_name_plural = 'Medical Records'
