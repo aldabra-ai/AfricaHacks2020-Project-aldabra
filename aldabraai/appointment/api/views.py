@@ -1,3 +1,4 @@
+from aldabraai.appointment.models import appointment
 from rest_framework import serializers
 from rest_framework.decorators import action
 from rest_framework.serializers import Serializer
@@ -20,6 +21,23 @@ class CreateAppointmentAPI(CreateAPIView):
 
     def perform_create(self, serializer):
         serializer.save(patient=self.request.user)
+
+    def send_email_notification(self, pk):
+        appointment = self.get_object(pk)
+        doctor_email = appointment.get_doctor_email
+
+        sender = 'amidbidee@gmail.com'
+        appointment_url = appointment.get_absolute_url
+        
+        subject, from_email, to = "Appointment Request", f'{sender}', f'{doctor_email}'
+        text_content = "Someone Requested an Appointment with you, please review it here"
+        html_content = f'<p>Someone Requested an Appointment with you, please review it <a href={appointment_url}>here</a></p>'
+        msg = EmailMultiAlternatives(subject, text_content, from_email, [to])
+        msg.attach_alternative(html_content, "text/html")
+        msg.send()
+
+
+
 
 
     # @action(detail=True, methods='post', url_path='reschedule_appointment',name='reschedule-appointment')

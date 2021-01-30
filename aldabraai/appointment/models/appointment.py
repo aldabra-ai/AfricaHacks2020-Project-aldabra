@@ -80,6 +80,10 @@ class Appointment(models.Model):
 
     def get_absolute_url(self):
         return reverse('appointment-detail', kwargs={'pk':self.pk})
+
+    @property
+    def get_doctor_email(self):
+        return self.booked_doctor_office.office_owner.email
     class Meta:
         ordering = ['-appointment_date']
 
