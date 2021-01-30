@@ -7,9 +7,9 @@ from hospitaldb.models import Hospital
 class Doctor(models.Model):
     full_name = models.CharField('Full Name', max_length=500)
     doctor_id = models.CharField('Doctors ID', max_length=10, unique=True)
-    residing_hospital = models.ForeignKey(Hospital, on_delete=models.CASCADE, blank=True)
+    residing_hospital = models.OneToOneField(Hospital, on_delete=models.CASCADE, blank=True, null=True)
     practicing_from = models.DateField()
-    owner = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    owner = models.OneToOneField(settings.AUTH_USER_MODEL, related_name='doctor_profile', on_delete=models.CASCADE)
 
     def __str__(self):
         return self.full_name
@@ -19,7 +19,7 @@ class Doctor(models.Model):
         
 
 class AffiliatedHospital(models.Model):
-    affiliated_doctor = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE) 
+    affiliated_doctor = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='affiliated_hospitals', on_delete=models.CASCADE) 
     hospital_name = models.CharField(max_length=500)
     address = models.CharField(max_length=300)
     city = models.CharField(max_length=200)
@@ -30,6 +30,5 @@ class AffiliatedHospital(models.Model):
 
     def __str__(self):
         return self.affiliated_doctor
-
 
 

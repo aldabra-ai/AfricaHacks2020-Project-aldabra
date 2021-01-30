@@ -45,7 +45,7 @@ INSTALLED_APPS = [
     'authend.apps.AuthendConfig',
     # COMMON
     'base.apps.BaseConfig',
-    'accounts.apps.AccountsConfig',
+    'account.apps.AccountConfig',
     'hospitaldb.apps.HospitaldbConfig',
     # FEATURE(s)
     'dashboard.apps.DashboardConfig',
@@ -154,7 +154,6 @@ STATIC_URL = '/static/'
 
 
 ## Authentication Settings
-
 # Backend
 
 

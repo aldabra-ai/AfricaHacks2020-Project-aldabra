@@ -10,14 +10,14 @@ class PatientProfileAdmin(admin.ModelAdmin):
         'city', 
         'country', 
         'phone', 
-        'pcp'
+        #'pcp'
         ]
     
     list_filter = [
         'owner', 
         'city', 
         'country', 
-        'pcp'
+        #'pcp'
         ]
 
 
@@ -28,7 +28,7 @@ class PatientProfileAdmin(admin.ModelAdmin):
         'full_name', 
         'city', 
         'country', 
-        'pcp'
+        #'pcp'
         ]
 @admin.register(Doctor)
 class DoctorProfileAdmin(admin.ModelAdmin):

@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class AccountsConfig(AppConfig):
-    name = 'accounts'
+class AccountConfig(AppConfig):
+    name = 'account'
     verbose_name = 'User Accounts and Profiles/API'

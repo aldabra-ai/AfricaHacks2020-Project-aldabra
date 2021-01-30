@@ -1,5 +1,6 @@
 from django.db import models
 from django.conf import settings
+from django.db.models.fields import related
 from .doctor import Doctor
 
 
@@ -13,7 +14,7 @@ class PatientReview(models.Model):
     ]
 
     review_name = models.CharField('The review name or summary', max_length=500)
-    owner = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    owner = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='reviews', on_delete=models.CASCADE)
     reviewed_doctor = models.ForeignKey(Doctor, on_delete=models.CASCADE)
     is_review_anonymous = models.BooleanField(default=False)
     wait_time_rating = models.FloatField(max_length=3, blank=True)

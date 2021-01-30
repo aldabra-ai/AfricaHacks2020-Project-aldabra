@@ -1,6 +1,7 @@
 from django.db import models
 from hospitaldb.models import DoctorOffice,Nurse
 from django.conf import settings
+from django.shortcuts import reverse 
 
 
 class BookedAppointmentManager(models.Manager):
@@ -42,21 +43,23 @@ class Appointment(models.Model):
     ]
 
     BOOKING_CHANNEL = [
-        ('OP', 'On App'),
-        ('OC', 'On Call'),
+        ('OP', 'App'),
+        ('OC', 'Call'),
     ]
 
-    patient = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    booked_doctor_office = models.ForeignKey(DoctorOffice, on_delete=models.CASCADE)
+    patient = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='patient_appointments',on_delete=models.CASCADE)
+    booked_doctor_office = models.ForeignKey(DoctorOffice, related_name='appointments', on_delete=models.CASCADE)
     appointment_for = models.CharField(max_length=500, blank=True)
-    appointment_date = models.DateField()
-    appointment_time = models.TimeField()
+    appointment_date = models.DateField(blank=True, null=True)
+    appointment_time = models.TimeField(blank=True, null=True)
     appointment_end_time = models.TimeField(blank=True, null=True)
-    appointment_state = models.CharField(max_length=2, choices=APPOINTMENT_STATE, default=APPOINTMENT_STATE[0])
-    appointment_status = models.CharField(max_length=2, choices=APPOINTMENT_STATUS, default=APPOINTMENT_STATUS[0])
-    booking_channel = models.CharField(max_length=2, choices=BOOKING_CHANNEL, default=BOOKING_CHANNEL[0])
+    appointment_state = models.CharField(max_length=10, choices=APPOINTMENT_STATE, default=APPOINTMENT_STATE[0][0])
+    short_note = models.CharField(max_length=500, blank=True)
+    appointment_status = models.CharField(max_length=5, choices=APPOINTMENT_STATUS, default=APPOINTMENT_STATUS[0][0])
+    booking_channel = models.CharField(max_length=5, choices=BOOKING_CHANNEL, default=BOOKING_CHANNEL[0][0])
     prep_nurse = models.ForeignKey(Nurse, on_delete=models.PROTECT, blank=True, null=True)
-    appointment_id = models.CharField(max_length=7, unique=True)
+    appointment_id = models.CharField(max_length=7, unique=True, blank=True)
+    doctor_dec_reason = models.CharField("Doctor's Reason for Declining Appointment", max_length=450, blank=True)
 
     ## Managers
 
@@ -75,6 +78,10 @@ class Appointment(models.Model):
     def __str__(self):
         return self.appointment_for
 
+    def get_absolute_url(self):
+        return reverse('appointment-detail', kwargs={'pk':self.pk})
     class Meta:
         ordering = ['-appointment_date']
+
+    
 

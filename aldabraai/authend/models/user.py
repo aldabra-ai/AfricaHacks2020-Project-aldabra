@@ -1,6 +1,14 @@
 from django.db import models
 from django.contrib.auth.base_user import AbstractBaseUser, BaseUserManager
+from django.shortcuts import reverse
 
+class PatientUserManager(models.Manager):
+    def get_queryset(self):
+        return super().get_queryset().filter(profile_type='PT')
+
+class DoctorUsers(models.Manager):
+    def get_queryset(self):
+        return super().get_queryset().filter(profile_type='DR')
 class AldabraUserManager(BaseUserManager):
 
     def create_user(self,email,identifier,date_of_birth,profile_type,password=None):
@@ -69,6 +77,9 @@ class User(AbstractBaseUser):
 
     objects = AldabraUserManager()
 
+    patient_users = PatientUserManager()
+    doctor_users = DoctorUsers()
+
     USERNAME_FIELD = 'identifier'
     EMAIL_FIELD = 'email'
 
@@ -76,6 +87,13 @@ class User(AbstractBaseUser):
 
     def __str__(self):
         return self.identifier
+    
+    def full_name(self):
+        return self.first_name + ' ' + self.last_name
+
+    def slug(self):
+        slug = models.SlugField(default=self.identifier, unique=True)
+        return slug
     
     def has_perm(self, perm, obj=None):
         "Does the user have a specific permission?"
@@ -97,4 +115,5 @@ class User(AbstractBaseUser):
         else:
             return 'A Patient'
 
-    
+    def get_absolute_url(self):
+        return reverse('user-page', kwargs={'slug': self.slug})

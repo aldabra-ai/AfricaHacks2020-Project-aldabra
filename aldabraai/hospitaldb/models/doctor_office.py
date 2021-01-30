@@ -4,7 +4,7 @@ from .hospital import Hospital
 
 
 class DoctorOffice(models.Model):
-    office_owner = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.PROTECT, verbose_name='Office Owner')
+    office_owner = models.OneToOneField(settings.AUTH_USER_MODEL, related_name='doctor_office',on_delete=models.PROTECT, verbose_name='Office Owner')
     office_name = models.CharField(max_length=400)
     hospital = models.ForeignKey(Hospital, on_delete=models.CASCADE)
     first_consultation_fee = models.FloatField()
@@ -32,7 +32,7 @@ class OfficeSchedule(models.Model):
     ]
 
     office = models.ForeignKey(DoctorOffice, on_delete=models.CASCADE)
-    days_available = models.DateField()
+    day_available = models.DateField()
     start_time = models.TimeField()
     end_time = models.TimeField()
     availability = models.CharField(max_length=2, choices=AVAILABILITY, default=AVAILABILITY[0])

@@ -3,7 +3,7 @@ from .doctor import Doctor
 from django.conf import settings
 
 class DoctorQualification(models.Model):
-    doctor = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    doctor = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='doctor_qualifications',on_delete=models.CASCADE)
     qualification_name = models.CharField('Qualification Name', max_length=700)
     institute_name = models.CharField('Name Of Institution', max_length=700)
     procurement_year = models.DateField('Precurment Date in YYY-MMM-DDD')

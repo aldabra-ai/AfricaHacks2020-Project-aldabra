@@ -27,6 +27,7 @@ Pillow = "*"
 PyJWT = "*"
 django-rest-knox = "*"
 psycopg2 = "*"
+python-decouple = "*"
 
 [dev-packages]
 
