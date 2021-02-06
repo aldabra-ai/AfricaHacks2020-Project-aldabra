@@ -3,20 +3,21 @@ from ..models import Appointment
 from authend.models import User
 
 
-class AppointmentSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Appointment
-        fields = [
-            'patient', 
-            'booked_doctor_office',
-            'appointment_for',
-            'appointment_date',
-            'appointment_time',
-            'appointment_end_time',
-            'short_note',
-            'prep_nurse',
-            'booking_channel',
-            ]
+# class AppointmentSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = Appointment
+#         fields = [
+#             'id',
+#             'patient', 
+#             'booked_doctor_office',
+#             'appointment_for',
+#             'appointment_date',
+#             'appointment_time',
+#             'appointment_end_time',
+#             'short_note',
+#             'prep_nurse',
+#             'booking_channel',
+#             ]
 
 
 
@@ -41,10 +42,13 @@ class RetrieveAppointmentSerializer(serializers.ModelSerializer):
             ]
 
 
-class CreateAppointmentSerializer(serializers.ModelSerializer):
+class AppointmentSerializer(serializers.ModelSerializer):
+    id = serializers.IntegerField(read_only=True)
+    appointment_id = serializers.CharField(read_only=True)
     class Meta:
         model = Appointment
         fields = [ 
+            'id',
             'booked_doctor_office',
             'appointment_for',
             'appointment_date',

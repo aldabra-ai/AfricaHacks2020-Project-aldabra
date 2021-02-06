@@ -1,56 +1,48 @@
-from aldabraai.appointment.models import appointment
-from rest_framework import serializers
-from rest_framework.decorators import action
+from rest_framework import response
 from rest_framework.serializers import Serializer
-from .serializers import CreateAppointmentSerializer,RetrieveAppointmentSerializer,DoctorResaonSerializer,RescheduleAppointmentSerializer,SetPrepNurseSerializer
-from rest_framework.generics import CreateAPIView,UpdateAPIView,RetrieveAPIView
-from rest_framework import viewsets
+from .serializers import AppointmentSerializer, AppointmentSerializer,RetrieveAppointmentSerializer,DoctorResaonSerializer,RescheduleAppointmentSerializer,SetPrepNurseSerializer
+from rest_framework.generics import CreateAPIView, GenericAPIView,UpdateAPIView,RetrieveAPIView
+from rest_framework import viewsets, permissions
+from rest_framework.generics import mixins
 from ..models import Appointment
 from django.shortcuts import redirect
 from authend.models import User
 from django.shortcuts import get_object_or_404
-from rest_framework.reverse import reverse
-from django.core.mail import EmailMultiAlternatives
 from rest_framework.response import Response
+from django.http import HttpResponseRedirect
 
 
+class CreateAppointmentClass(mixins.CreateModelMixin, viewsets.GenericViewSet):
+    pass
 
-class CreateAppointmentAPI(CreateAPIView):
-    model = Appointment
-    serializer_class = CreateAppointmentSerializer
+class BaseAppointmentAPI(viewsets.ModelViewSet):
+    queryset = Appointment.objects.all()
+    serializer_class = AppointmentSerializer
 
+    def create(self, request, *args, **kwargs):
+        response = super(BaseAppointmentAPI, self).create(request, *args, **kwargs)
+        
+        ## RETRIEVE APPOINTMENT ID AND GET CURRENTLY SAVED APPOINTMENT
+        pk = response.data['id']
+        appointment = get_object_or_404(Appointment, id=pk)
+
+        ###### THIS WILL BE CHANGED LATER BUT FOR NOW ########
+        appointment_id = f"appt_{+pk}"
+        appointment.appointment_id = appointment_id
+        appointment.save()
+        ######      CHANGE IMMINENT     ######################
+        
+        ## REDIRECT TO NOTIFY DOCTOR FUNCTION
+        url = appointment.get_notify_doctor_url()
+        return HttpResponseRedirect(redirect_to=f'{url}')
+
+        
     def perform_create(self, serializer):
         serializer.save(patient=self.request.user)
 
-    def send_email_notification(self, pk):
-        appointment = self.get_object(pk)
-        doctor_email = appointment.get_doctor_email
-
-        sender = 'amidbidee@gmail.com'
-        appointment_url = appointment.get_absolute_url
-        
-        subject, from_email, to = "Appointment Request", f'{sender}', f'{doctor_email}'
-        text_content = "Someone Requested an Appointment with you, please review it here"
-        html_content = f'<p>Someone Requested an Appointment with you, please review it <a href={appointment_url}>here</a></p>'
-        msg = EmailMultiAlternatives(subject, text_content, from_email, [to])
-        msg.attach_alternative(html_content, "text/html")
-        msg.send()
 
 
 
-
-
-    # @action(detail=True, methods='post', url_path='reschedule_appointment',name='reschedule-appointment')
-    # def reschedule_appointment(self, request, pk):
-    #     appointment = self.get_object()
-    #     serializer = RescheduleAppointmentSerializer(data=request.data)
-    #     if serializer.is_valid():
-    #         date = serializer.validated_data['appointment_date']
-    #         time = serializer.validated_data['time']
-    #         appointment.appointment_date = date
-    #         appointment.time = time
-    #         appointment.save()
-    #         return Response(serializer.data)
 
         
         
