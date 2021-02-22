@@ -1,21 +1,28 @@
 from django.db import models
 from django.conf import settings
 from hospitaldb.models import Hospital
-
+from django.shortcuts import reverse
 
 
 class Doctor(models.Model):
+    full_name = models.CharField(max_length=300, blank=True)
     doctor_id = models.CharField('Doctors ID', max_length=10, unique=True)
     residing_hospital = models.OneToOneField(Hospital, on_delete=models.CASCADE, blank=True, null=True)
     practicing_from = models.DateField()
     owner = models.OneToOneField(settings.AUTH_USER_MODEL, related_name='doctor_profile', on_delete=models.CASCADE)
-
-    @property
-    def full_name(self):
-        return self.owner.full_name
+    slug = models.SlugField(unique=True)
 
     def __str__(self):
         return self.full_name
+
+    @property
+    def doctor_full_name(self):
+        return self.owner.full_name
+
+    def get_absolute_url(self):
+        return reverse('accounts:doctor-profile-detail', kwargs={
+                                                        'slug': self.slug}
+            )
     class Meta:
         ordering = ['residing_hospital']
         

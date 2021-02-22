@@ -1,0 +1,2 @@
+from .patient_views import PatientProfileAPIView
+from .doctor_views import DoctorProfileAPIView

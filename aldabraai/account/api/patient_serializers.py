@@ -1,8 +1,20 @@
 from rest_framework import serializers
-from authend.models import User
+from ..models import Patient
 
 
 
-
-def PatientProfileSerializer(serializers.ModelSerializer):
-    pass
+class PatientDetailSerializer(serializers.ModelSerializer):
+    id = serializers.ReadOnlyField(read_only=True)
+    full_name = serializers.ReadOnlyField(read_only=True)
+    
+    class Meta:
+        model = Patient
+        fields = [
+            'id',
+            'full_name', 
+            'home_address',
+            'city',
+            'country',
+            'phone',
+            'family_or_emerg_phone'
+        ]
