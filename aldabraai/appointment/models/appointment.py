@@ -79,15 +79,37 @@ class Appointment(models.Model):
         return self.appointment_for
 
     def get_absolute_url(self):
-        return reverse('appointment:appointment-detail', kwargs={'pk':self.pk})
+        return reverse('appointment:base-appointment-detail', kwargs={'pk':self.pk})
 
     def get_notify_doctor_url(self):
-        return reverse('appointment:notify-doctor', kwargs={'pk' :self.pk})
+        return reverse('appointment:notify-doctor', kwargs={'pk' : self.pk})
+
+    def get_review_url(self):
+        return reverse('appointment:review', kwargs={'pk': self.pk})
+
+    def get_reshedule_url(self):
+        return reverse('appointment:reschedule-detail', kwargs={'pk': self.pk})
+
+    def get_set_nurse_url(self):
+        return reverse('appointment:set-prepnurse-detail', kwargs={'pk': self.pk})
+
+    def get_accept_set_timer_url(self):
+        return reverse('appointment:accept-set-timer', kwargs={'pk': self.pk})
+
+    def get_decline_delete_url(self):
+        return reverse('appointment:decline-delete', kwargs={'pk': self.pk})
+
+    def setState(self, state:str):
+        self.appointment_state = state
+        return state
 
     @property
     def get_doctor_email(self):
         return self.booked_doctor_office.office_owner.email
 
+    @property
+    def get_patient_email(self):
+        return self.patient.email
     class Meta:
         ordering = ['-appointment_date']
 

@@ -20,7 +20,6 @@ class OfficeScheduleSerializer(serializers.ModelSerializer):
 
 
 class DoctorOfficeSerializer(serializers.ModelSerializer):
-    office_owner = serializers.PrimaryKeyRelatedField(required=True, queryset=User.objects.all())
     hospital = serializers.StringRelatedField()
     office_schedule = OfficeScheduleSerializer(many=True)
     appointments = serializers.PrimaryKeyRelatedField(read_only=True, many=True)
@@ -28,7 +27,6 @@ class DoctorOfficeSerializer(serializers.ModelSerializer):
     class Meta:
         model = DoctorOffice
         fields = [
-            'office_owner',
             'office_name',
             'hospital',
             'first_consultation_fee',

@@ -71,15 +71,23 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'static', 'media')
 ## EMAIL SERVICES
 SERVER_EMAIL = 'amidbidee@gmail.com'
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_USE_TLS = True 
-EMAIL_USE_SSL = False
+EMAIL_USE_TLS = False 
+EMAIL_USE_SSL = True
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_PASSWORD = '[|passcode|gmail|active|]' 
+EMAIL_HOST_PASSWORD = 'passcode|gmail|active' 
 EMAIL_HOST_USER = SERVER_EMAIL 
 EMAIL_PORT = 587 
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
  
 
+REST_FRAMEWORK = {
 
+    'TEST_REQUEST_DEFAULT_FORMAT': 'json', 
 
+    # 'DEFAULT_AUTHENTICATION_CLASSES': [
+    #     'rest_framework.authentication.BasicAuthentication',
+    #     'rest_framework.authentication.TokenAuthentication',
+    # ],
+
+}
 

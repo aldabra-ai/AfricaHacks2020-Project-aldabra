@@ -8,7 +8,8 @@ from django.urls import path, include
 ## API(s) entry points
 apis = [
     path('base/', include('base.urls')),
-    path('appointment/', include('appointment.urls', namespace='appointment'))
+    path('appointment/', include('appointment.urls', namespace='appointment')),
+    path('hospitaldb/', include('hospitaldb.urls', namespace='hospitaldb'))
 ]
 
 urlpatterns = [

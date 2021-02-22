@@ -34,7 +34,6 @@ class PatientProfileAdmin(admin.ModelAdmin):
 class DoctorProfileAdmin(admin.ModelAdmin):
     list_display = [
         'owner', 
-        'full_name',  
         'doctor_id',
         'residing_hospital',
         'practicing_from',
@@ -42,8 +41,7 @@ class DoctorProfileAdmin(admin.ModelAdmin):
     
     list_filter = [
         'owner', 
-        'residing_hospital', 
-        'full_name', 
+        'residing_hospital',  
         'practicing_from',
         ]
 
@@ -51,8 +49,7 @@ class DoctorProfileAdmin(admin.ModelAdmin):
 
     search_fields = [
         'owner', 
-        'residing_hospital', 
-        'full_name', 
+        'residing_hospital',  
         'practicing_from',
         ]
 

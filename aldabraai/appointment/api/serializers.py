@@ -2,7 +2,6 @@ from rest_framework import serializers
 from ..models import Appointment
 from authend.models import User
 
-
 # class AppointmentSerializer(serializers.ModelSerializer):
 #     class Meta:
 #         model = Appointment
@@ -68,7 +67,7 @@ class AppointmentSerializer(serializers.ModelSerializer):
 
 
 class DoctorResaonSerializer(serializers.ModelSerializer):
-    doctor_rej_reason = serializers.CharField()
+    doctor_rej_reason = serializers.CharField(min_length=20)
     class Meta:
         fields = [
             'doctor_rej_reason'
@@ -83,7 +82,8 @@ class RescheduleAppointmentSerializer(serializers.ModelSerializer):
         model = Appointment
         fields = [
             'appointment_date',
-            'appointment_time'
+            'appointment_time',
+            'prep_nurse'
         ]
 
 
@@ -92,4 +92,33 @@ class SetPrepNurseSerializer(serializers.ModelSerializer):
         model = Appointment
         fields = [
             'prep_nurse'
+        ]
+
+    
+class BookedAppointmentSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Appointment 
+        fields = [
+            'patient', 
+            'booked_doctor_office',
+            'appointment_for',
+            'appointment_date',
+            'appointment_time',
+            'appointment_end_time',
+            'short_note',
+            'booking_channel',
+        ]
+
+class RequestedAppointmentSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Appointment
+        fields = [
+            'patient', 
+            'booked_doctor_office',
+            'appointment_for',
+            'appointment_date',
+            'appointment_time',
+            'appointment_end_time',
+            'short_note',
+            'booking_channel',
         ]
