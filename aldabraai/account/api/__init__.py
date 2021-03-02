@@ -1,2 +1,2 @@
-from .patient_views import PatientProfileAPIView
-from .doctor_views import DoctorProfileAPIView
+from .patient_views import PatientProfileAPIView, PatientBankDetailAPI, PatientIsurranceDetailAPI, PatientReviewAPI
+from .doctor_views import DoctorProfileAPIView, DoctorQualificationAPI, DoctorSpecializationAPI

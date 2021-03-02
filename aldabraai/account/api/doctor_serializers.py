@@ -19,6 +19,7 @@ class DoctorDetailSerializer(serializers.ModelSerializer):
 
 
 class DoctorQualificationSerializer(serializers.ModelSerializer):
+    doctor = serializers.PrimaryKeyRelatedField(read_only=True)
     qualification_name = serializers.CharField(max_length=700)
     institute_name = serializers.CharField(max_length=700)
     procurement_year = serializers.DateField()
@@ -26,16 +27,17 @@ class DoctorQualificationSerializer(serializers.ModelSerializer):
     class Meta:
         model = DoctorQualification
         fields = [
+            'doctor',
             'qualification_name',
             'institute_name',
             'procurement_year'
         ]
 
 class DoctorSpecializationSerializer(serializers.ModelSerializer):
-    specialization = serializers.StringRelatedField(many=True)
-
+    doctor = serializers.PrimaryKeyRelatedField(read_only=True)
     class Meta:
         model = DoctorSpecialization
         fields = [
-            'specializtion'
+            'doctor',
+            'specialization'
         ]

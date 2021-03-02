@@ -7,7 +7,7 @@ from django.shortcuts import reverse
 class Doctor(models.Model):
     full_name = models.CharField(max_length=300, blank=True)
     doctor_id = models.CharField('Doctors ID', max_length=10, unique=True)
-    residing_hospital = models.OneToOneField(Hospital, on_delete=models.CASCADE, blank=True, null=True)
+    residing_hospital = models.ForeignKey(Hospital, on_delete=models.CASCADE, blank=True, null=True)
     practicing_from = models.DateField()
     owner = models.OneToOneField(settings.AUTH_USER_MODEL, related_name='doctor_profile', on_delete=models.CASCADE)
     slug = models.SlugField(unique=True)
@@ -20,7 +20,7 @@ class Doctor(models.Model):
         return self.owner.full_name
 
     def get_absolute_url(self):
-        return reverse('accounts:doctor-profile-detail', kwargs={
+        return reverse('accounts:doctor-detail', kwargs={
                                                         'slug': self.slug}
             )
     class Meta:

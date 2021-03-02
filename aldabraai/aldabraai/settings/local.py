@@ -90,4 +90,3 @@ REST_FRAMEWORK = {
     # ],
 
 }
-

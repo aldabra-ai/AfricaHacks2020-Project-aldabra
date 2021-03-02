@@ -21,7 +21,7 @@ class PatientInsurranceDetail(models.Model):
     insurrance_account_name = models.CharField(max_length=300)
     insurrance_account_no = models.CharField(max_length=12)
     patient = models.OneToOneField(settings.AUTH_USER_MODEL, related_name='inssurance_details', on_delete=models.CASCADE)
-    bank_details = models.ForeignKey(PatientBankDetail, on_delete=models.PROTECT)
+    bank_details = models.OneToOneField(PatientBankDetail, on_delete=models.PROTECT, blank=True, null=True)
 
     def __str__(self):
         return self.insurrance_account_name

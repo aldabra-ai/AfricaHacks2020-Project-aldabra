@@ -12,7 +12,7 @@ class Specialization(models.Model):
 
 
 class DoctorSpecialization(models.Model):
-    doctor = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='doctor_specializations',on_delete=models.CASCADE)
+    doctor = models.OneToOneField(settings.AUTH_USER_MODEL, related_name='doctor_specializations',on_delete=models.CASCADE)
     specialization = models.ManyToManyField(Specialization)
 
 
