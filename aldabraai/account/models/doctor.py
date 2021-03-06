@@ -21,11 +21,14 @@ class Doctor(models.Model):
 
     def get_absolute_url(self):
         return reverse('accounts:doctor-detail', kwargs={
-                                                        'slug': self.slug}
+                                                        'slug': self.slug}                                
             )
+
+    def add_review_url(self):
+        return reverse('accounts:doctor-review', kwargs={'slug': self.slug})
+        
     class Meta:
         ordering = ['residing_hospital']
-        
 
 class AffiliatedHospital(models.Model):
     affiliated_doctor = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='affiliated_hospitals', on_delete=models.CASCADE) 

@@ -1,2 +1,14 @@
-from .patient_views import PatientProfileAPIView, PatientBankDetailAPI, PatientIsurranceDetailAPI, PatientReviewAPI
-from .doctor_views import DoctorProfileAPIView, DoctorQualificationAPI, DoctorSpecializationAPI
+from .viewsets import (
+    PatientProfileAPIView, 
+    PatientBankDetailAPI, 
+    PatientIsurranceDetailAPI, 
+    DoctorReviewAPI, 
+    #review_doctor,
+
+    #### Doctor viewsets ####
+    DoctorProfileAPIView, 
+    DoctorQualificationAPI, 
+    DoctorSpecializationAPI
+)
+
+from .views import review_doctor

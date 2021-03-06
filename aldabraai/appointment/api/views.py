@@ -1,15 +1,34 @@
-from rest_framework import response
-from rest_framework.serializers import Serializer
+#### REST FRAMEWORK ####
 from rest_framework.generics import mixins, ListAPIView
-from rest_framework import viewsets, permissions
+from rest_framework import (
+    viewsets, 
+    #permissions
+)
 from rest_framework.response import Response
 from rest_framework.decorators import action
-from .serializers import AppointmentSerializer, AppointmentSerializer,RetrieveAppointmentSerializer,DoctorResaonSerializer,RescheduleAppointmentSerializer,SetPrepNurseSerializer,BookedAppointmentSerializer,RequestedAppointmentSerializer
+
+#### COMMON ####
+from django.shortcuts import (
+    redirect,
+    get_object_or_404
+)
+
+
+#### SERIALIZERS ####
+from .serializers import (
+    AppointmentSerializer, 
+    AppointmentSerializer,
+    #RetrieveAppointmentSerializer,
+    DoctorResaonSerializer,
+    RescheduleAppointmentSerializer,
+    SetPrepNurseSerializer,
+    BookedAppointmentSerializer,
+    RequestedAppointmentSerializer
+)
+
+#### MODELS ####
 from ..models import Appointment
-from django.shortcuts import redirect
-from authend.models import User
-from django.shortcuts import get_object_or_404
-from django.http import HttpResponseRedirect
+
 
 
 
@@ -41,7 +60,7 @@ class BaseAppointmentAPI(viewsets.ModelViewSet):
         
         ## REDIRECT TO NOTIFY DOCTOR FUNCTION
         url = appointment.get_notify_doctor_url()
-        return HttpResponseRedirect(redirect_to=f'{url}')
+        return redirect(redirect_to=f'{url}')
 
         
     def perform_create(self, serializer):
@@ -65,7 +84,7 @@ class RescheduleAppointmentAPI(UpdateViewsets):
 
         appointment = get_object_or_404(Appointment, pk=pk)
         url = appointment.get_accept_set_timer_url()
-        return HttpResponseRedirect(redirect_to=f'{url}')
+        return redirect(redirect_to=f'{url}')
 
     def perform_update(self, serializer):
         return serializer.save()
@@ -80,7 +99,7 @@ class AddPrepNurseAPI(UpdateViewsets):
 
         appointment = get_object_or_404(Appointment, pk=pk)
         url = appointment.get_accept_set_timer_url()
-        return HttpResponseRedirect(redirect_to=f'{url}')
+        return redirect(redirect_to=f'{url}')
 
     def perform_update(self, serializer):
         return serializer.save()
@@ -96,7 +115,7 @@ class AppointmentDeclineReasonAPI(UpdateViewsets):
 
         appointment = get_object_or_404(Appointment, pk=pk)
         url = appointment.get_decline_delete_url()
-        return HttpResponseRedirect(redirect_to=f'{url}')
+        return redirect(redirect_to=f'{url}')
 
     def perform_update(self, serializer):
         return serializer.save()
