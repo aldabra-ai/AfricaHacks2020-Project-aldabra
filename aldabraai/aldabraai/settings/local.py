@@ -10,8 +10,6 @@ from .base import *
 
 DEBUG = True
 
-SECRET_KEY = '@fats@v7c5ss%#z8rx801@*zqpjy16_zap5hl+kwjv6qkvo$*k'
-
 # SECURITY WARNING: update this when you have the production host
 ALLOWED_HOSTS = [
     '0.0.0.0', 
@@ -69,8 +67,24 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'static', 'media')
 
 
 ## EMAIL SERVICES
-EMAIL_HOST = '******'
-EMAIL_PORT = '******'
-EMAIL_USE_SSL = '******'
-EMAIL_HOST_USER = '******'
-EMAIL_HOST_PASSWORD = '******'
+SERVER_EMAIL = 'amidbidee@gmail.com'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_USE_TLS = False 
+EMAIL_USE_SSL = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_PASSWORD = 'passcode|gmail|active' 
+EMAIL_HOST_USER = SERVER_EMAIL 
+EMAIL_PORT = 587 
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+ 
+
+REST_FRAMEWORK = {
+
+    'TEST_REQUEST_DEFAULT_FORMAT': 'json', 
+
+    # 'DEFAULT_AUTHENTICATION_CLASSES': [
+    #     'rest_framework.authentication.BasicAuthentication',
+    #     'rest_framework.authentication.TokenAuthentication',
+    # ],
+
+}

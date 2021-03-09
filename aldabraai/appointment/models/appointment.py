@@ -58,7 +58,7 @@ class Appointment(models.Model):
     appointment_status = models.CharField(max_length=5, choices=APPOINTMENT_STATUS, default=APPOINTMENT_STATUS[0][0])
     booking_channel = models.CharField(max_length=5, choices=BOOKING_CHANNEL, default=BOOKING_CHANNEL[0][0])
     prep_nurse = models.ForeignKey(Nurse, on_delete=models.PROTECT, blank=True, null=True)
-    appointment_id = models.CharField(max_length=7, unique=True, blank=True)
+    appointment_id = models.CharField(max_length=7, unique=True, blank=True, null=True)
     doctor_dec_reason = models.CharField("Doctor's Reason for Declining Appointment", max_length=450, blank=True)
 
     ## Managers
@@ -79,11 +79,37 @@ class Appointment(models.Model):
         return self.appointment_for
 
     def get_absolute_url(self):
-        return reverse('appointment-detail', kwargs={'pk':self.pk})
+        return reverse('appointment:base-appointment-detail', kwargs={'pk':self.pk})
+
+    def get_notify_doctor_url(self):
+        return reverse('appointment:notify-doctor', kwargs={'pk' : self.pk})
+
+    def get_review_url(self):
+        return reverse('appointment:review', kwargs={'pk': self.pk})
+
+    def get_reshedule_url(self):
+        return reverse('appointment:reschedule-detail', kwargs={'pk': self.pk})
+
+    def get_set_nurse_url(self):
+        return reverse('appointment:set-prepnurse-detail', kwargs={'pk': self.pk})
+
+    def get_accept_set_timer_url(self):
+        return reverse('appointment:accept-set-timer', kwargs={'pk': self.pk})
+
+    def get_decline_delete_url(self):
+        return reverse('appointment:decline-delete', kwargs={'pk': self.pk})
+
+    def setState(self, state:str):
+        self.appointment_state = state
+        return state
 
     @property
     def get_doctor_email(self):
         return self.booked_doctor_office.office_owner.email
+
+    @property
+    def get_patient_email(self):
+        return self.patient.email
     class Meta:
         ordering = ['-appointment_date']
 

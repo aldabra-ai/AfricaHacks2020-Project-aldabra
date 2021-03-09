@@ -34,7 +34,6 @@ class PatientProfileAdmin(admin.ModelAdmin):
 class DoctorProfileAdmin(admin.ModelAdmin):
     list_display = [
         'owner', 
-        'full_name',  
         'doctor_id',
         'residing_hospital',
         'practicing_from',
@@ -42,8 +41,7 @@ class DoctorProfileAdmin(admin.ModelAdmin):
     
     list_filter = [
         'owner', 
-        'residing_hospital', 
-        'full_name', 
+        'residing_hospital',  
         'practicing_from',
         ]
 
@@ -51,8 +49,7 @@ class DoctorProfileAdmin(admin.ModelAdmin):
 
     search_fields = [
         'owner', 
-        'residing_hospital', 
-        'full_name', 
+        'residing_hospital',  
         'practicing_from',
         ]
 
@@ -136,7 +133,7 @@ class PatientReviewAdmin(admin.ModelAdmin):
         'review_name',
         'owner', 
         'reviewed_doctor',  
-        'is_review_anonymous',
+        'anonymous_review',
         'overall_rating',
         'is_doctor_recommended',
         'review_date',
@@ -146,7 +143,7 @@ class PatientReviewAdmin(admin.ModelAdmin):
         'review_name',
         'owner', 
         'reviewed_doctor',  
-        'is_review_anonymous',
+        'anonymous_review',
         'overall_rating',
         'is_doctor_recommended',
         'review_date',
@@ -158,7 +155,7 @@ class PatientReviewAdmin(admin.ModelAdmin):
         'review_name',
         'owner', 
         'reviewed_doctor',  
-        'is_review_anonymous',
+        'anonymous_review',
         'overall_rating',
         'is_doctor_recommended',
         'review_date',
