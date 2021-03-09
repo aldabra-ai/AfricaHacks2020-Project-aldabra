@@ -10,8 +10,6 @@ from .base import *
 
 DEBUG = True
 
-SECRET_KEY = '@fats@v7c5ss%#z8rx801@*zqpjy16_zap5hl+kwjv6qkvo$*k'
-
 # SECURITY WARNING: update this when you have the production host
 ALLOWED_HOSTS = [
     '0.0.0.0', 

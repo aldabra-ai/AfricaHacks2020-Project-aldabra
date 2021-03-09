@@ -1,3 +1,0 @@
-
-
-py manage.py shell
