@@ -1,7 +1,6 @@
 from rest_framework.relations import StringRelatedField
 from ..models import DoctorOffice,OfficeSchedule, Hospital,MedicalRecord
 from rest_framework import serializers
-from authend.models import User
 
 
 class OfficeScheduleSerializer(serializers.ModelSerializer):

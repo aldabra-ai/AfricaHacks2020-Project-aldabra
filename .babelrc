@@ -1,7 +1,7 @@
 {
     "plugins": [
         "syntax-dynamic-import",
-        "transform-class-properties",
+        "transform-class-properties"
     ],
     "presets": [
         [
@@ -10,6 +10,6 @@
                 "modules": false
             }
         ],
-        "@babel/preset-react",
+        "@babel/preset-react"
     ]
 }
