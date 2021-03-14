@@ -1,9 +1,11 @@
 ## REST FRAMEWORK IMPORTS
+from django.db.models import query
 from rest_framework import (
-    viewsets,
+    serializers, viewsets,
     generics,
     status
     )
+from rest_framework import response
 from rest_framework.generics import mixins
 from rest_framework.response import Response
 from rest_framework.decorators import action, api_view
@@ -70,7 +72,7 @@ class DoctorProfileAPIView(viewsets.ModelViewSet):
 
     def perform_create(self, serializer):
         user = self.request.user
-        username = user.identifier
+        username = slugify(user.identifier)
         full_name = user.full_name
         serializer.save(owner=user, full_name=full_name, slug=username)
 
@@ -82,16 +84,16 @@ class DoctorQualificationAPI(CreateUpdateRetrieveViewset):
     serializer_class = DoctorQualificationSerializer
     lookup_field = 'pk'
 
-    def get(self, pk):
-        return get_object_or_404(DoctorQualification, pk=pk)
+
+    def retrieve(self, request, pk):
+        queryset = self.get_queryset()
+        obj = get_object_or_404(queryset, pk=pk)
+
+        serializer = DoctorQualificationSerializer(obj)
+        return Response(serializer.data)
 
     def create(self, request, *args, **kwargs):
         response = super(DoctorQualificationAPI, self).create(request, *args, **kwargs)
-
-        return Response(response.data)
-
-    def update(self, request, *args, **kwargs):
-        response = super(DoctorQualificationAPI, self).update(request, *args, **kwargs)
 
         return Response(response.data)
 
@@ -107,8 +109,13 @@ class DoctorSpecializationAPI(CreateUpdateRetrieveViewset):
     serializer_class = DoctorSpecializationSerializer
     lookup_field = 'pk'        
 
-    def get(self, pk):
-        return get_object_or_404(DoctorSpecialization, pk=pk)
+    def retrieve(self, request, pk):
+        queryset = self.get_queryset()
+        obj = get_object_or_404(queryset, pk=pk)
+
+        serializer = DoctorSpecializationSerializer(obj)
+        return Response(serializer.data)
+
 
     def create(self, request, *args, **kwargs):
         response = super(DoctorSpecializationAPI, self).create(request, *args, **kwargs)

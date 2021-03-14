@@ -28,7 +28,6 @@ def get_variable_or_secrete(var_or_setting, secrets=secrets, limit_to_secret=Fal
         print('***Unable to get environmental variable...\nTrying somethig else...***')
        
         try:
-            '''Get the secret variable or return explicit exception.'''
             return secrets[var_or_setting]     
         except KeyError:
             error_msg = f'Set the {var_or_setting} environment variable'
