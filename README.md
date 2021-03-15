@@ -51,6 +51,13 @@
    npm run-scripts build
    ````
    
+## Database setup
+  Run following scripts in admin windows **powershell**
+  
+  In .\cli-scripts run:
+  ````
+  .\dbset.ps1
+  ````
 
 **Happy Hacking (o_o)**
    
