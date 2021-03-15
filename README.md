@@ -1,7 +1,7 @@
 # AfricaHacks2020-Project-aldabra
 
 ## Virtual environment setup
-  cd into **./cli-scripts** in project root and run:
+  cd into **.\cli-scripts** in project root and run:
   **assuming you have python3 installed on your system**
   ````
   .\envset.ps1
