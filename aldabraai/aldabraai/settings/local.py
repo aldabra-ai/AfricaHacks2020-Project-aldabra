@@ -40,15 +40,15 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
 
-        'NAME': 'aldabradb',
+        'NAME': get_variable_or_secrete('DB_NAME', limit_to_secret=True),
 
-        'USER': 'krummitz',
+        'USER': get_variable_or_secrete('DB_USER', limit_to_secret=True),
 
-        'PASSWORD': 'passcodepglocaladmin',
+        'PASSWORD': get_variable_or_secrete('DB_PASSWORD', limit_to_secret=True),
 
-        'HOST': '',
+        'HOST': get_variable_or_secrete('DB_HOST', limit_to_secret=True),
 
-        'PORT': '5432',
+        'PORT': get_variable_or_secrete('DB_PORT', limit_to_secret=True),
     }
 
 }
