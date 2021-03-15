@@ -1,6 +1,8 @@
 # AfricaHacks2020-Project-aldabra
 
 ## Virtual environment setup
+  ## For Windows  
+  
   cd into **.\cli-scripts** in project root and run:
   **assuming you have python3 installed on your system**
   ````
@@ -16,13 +18,24 @@
   deactive
   ````
   
+  ## For Linux(Ubuntu)
+    chmod 7 envset.sh
+    
+    ./envset
   
 ## start dev server
+  ## Windows
   in **.\cli-scripts** run:
   ````
   .\runserver.ps1
   ````
   
+  ## Linux(Ubuntu)
+  ````
+  chmod 7 runsever.sh
+  
+  ./runserver
+  ````
   
 ## React Frontend
    the react frontend was manually integrated into the django application
@@ -52,6 +65,7 @@
    ````
    
 ## Database setup
+  ## Windows
   Run following scripts in admin windows **powershell**
   
   In .\cli-scripts run:
