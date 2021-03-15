@@ -7,10 +7,12 @@
   .\envset.ps1
   ````
   
-  to activate and deactivate environment run respectively:
+  to activate environment run:
   ````
   .\envactive.ps1
-  
+  ````
+  deactive environment using
+  ````
   deactive
   ````
   
@@ -39,4 +41,17 @@
    .\frontend\templates\
    ````
    there you can adjust template structure or add all html files
+   
+   since the react was manually integrated, you can only run
+   ````
+   npm run-scripts dev
+   ````
+   or
+   ````
+   npm run-scripts build
+   ````
+   
+
+**Happy Hacking (o_o)**
+   
    
