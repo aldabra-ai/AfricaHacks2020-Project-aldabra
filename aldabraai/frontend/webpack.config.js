@@ -18,6 +18,20 @@ const webpack = require('webpack');
  */
 
 /*
+ * We've enabled MiniCssExtractPlugin for you. This allows your app to
+ * use css modules that will be moved into a separate CSS file instead of inside
+ * one of your module entries!
+ *
+ * https://github.com/webpack-contrib/mini-css-extract-plugin
+ *
+ */
+
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+
+
+
+
+/*
  * We've enabled TerserPlugin for you! This minifies your app
  * in order to load faster and run less javascript.
  *
@@ -32,23 +46,27 @@ const TerserPlugin = require('terser-webpack-plugin');
 
 module.exports = {
   mode: 'development',
-  entry: './aldabraai/frontend/src/index.js',
 
   output: {
-    path: path.resolve(__dirname, './aldabraai/frontend/static/frontend/')
+    path: path.resolve(__dirname, './static/frontend/public/')
   },
 
-  plugins: [new webpack.ProgressPlugin()],
+  plugins: [
+    new webpack.ProgressPlugin(),
+    new MiniCssExtractPlugin({ filename:'main.[contenthash].css' })
+  ],
 
   module: {
     rules: [{
       test: /\.(js|jsx)$/,
-      include: [path.resolve(__dirname, 'aldabraai/frontend/src')],
+      include: [path.resolve(__dirname, 'src')],
       loader: 'babel-loader'
     }, {
       test: /.css$/,
 
       use: [{
+        loader: MiniCssExtractPlugin.loader
+      }, {
         loader: "style-loader"
       }, {
         loader: "css-loader",

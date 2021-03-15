@@ -1,8 +1,5 @@
 from django.shortcuts import render
 from django.views.generic import TemplateView
 
-class IndexPage(TemplateView):
-    template_name = 'frontend/index.html'
-
-class LandingPage(TemplateView):
-    template_name = 'frontend/home/landing.html'
+class AppVIew(TemplateView):
+    template_name = 'frontend/app.html'

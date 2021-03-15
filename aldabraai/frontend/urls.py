@@ -1,7 +1,6 @@
 from django.urls import path
-from . import views
+from .views import AppVIew
 
 urlpatterns = [
-    #path('', views.IndexPage.as_view(), name='index-page'),
-    path('', views.LandingPage.as_view(), name='home')
+    path('', AppVIew.as_view(), name='app')
 ]

@@ -7,6 +7,9 @@
  * If you are looking for production-ready output files, see mode: "production" (https://webpack.js.org/configuration/mode/).
  */
 /******/ (() => { // webpackBootstrap
-/******/ 	"use strict";
+/*!**********************!*\
+  !*** ./src/index.js ***!
+  \**********************/
+eval("console.log('Hello World from your main file!');\n\n//# sourceURL=webpack://my-webpack-project/./src/index.js?");
 /******/ })()
 ;
