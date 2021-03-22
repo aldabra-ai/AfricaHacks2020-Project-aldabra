@@ -3,18 +3,23 @@
 """
 
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import (
+    path,
+    include
+)
 
 ## API(s) entry points
 apis = [
     path('base/', include('base.urls')),
-    path('appointment/', include('appointment.urls', namespace='appointment')),
+    path('appointments/', include('appointments.urls', namespace='appointments')),
     path('hospitaldb/', include('hospitaldb.urls', namespace='hospitaldb')),
-    path('accounts/', include('account.urls', namespace='accounts')),
+    path('accounts/', include('accounts.urls', namespace='accounts')),
 ]
 
 urlpatterns = [
+    # FRONTEND APP --> DONT PLAY WITH THIS OR WE LOSE OUR NICE DISPLAY 
     path('', include('frontend.urls')),
-    path('api/', include(apis)),
+    # API ENTRY version one --> DONT PLAY WITH THIS OR WE LOSE DATA
+    path('apis/v1/', include(apis)),
     path('admin/', admin.site.urls),
 ]

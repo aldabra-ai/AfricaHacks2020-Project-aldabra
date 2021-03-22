@@ -1,25 +1,36 @@
-## URL Required Imports
-from django.urls import path, include
+## URL COMMON
+from django.urls import (
+    path, 
+    include
+)
+## DRF
 from rest_framework import routers
 
 ## API Views
-from .api.views import BaseAppointmentAPI,RescheduleAppointmentAPI,AddPrepNurseAPI, BookedAppointmentsAPI,RequestedAppointmentsAPI
+from .api.views import (
+    #BaseAppointmentAPI,
+    RescheduleAppointmentAPI,
+    AddPrepNurseAPI, 
+    BookedAppointmentsAPI,
+    RequestedAppointmentsAPI
+    )
 
-# ## Normal Views
+## FBVs
 from .views import notifyDoctor, acceptSetTimer
 
-app_name = 'appointment'
+app_name = 'appointments'
 
 router = routers.DefaultRouter()
-router.register('', BaseAppointmentAPI, basename='base-appointment')
+#router.register('', BaseAppointmentAPI, basename='base-appointment')
 router.register('reschedule', RescheduleAppointmentAPI, basename='reschedule')
-router.register('set_prepnurse', AddPrepNurseAPI, basename='set-prepnurse')
+router.register('set/prepnurse', AddPrepNurseAPI, basename='setprepnurse')
+
 
 urlpatterns = [
-    path('notify_doctor/<pk>/', notifyDoctor, name='notify-doctor'),
-    path('accept_set_timer/<pk>/', acceptSetTimer, name='accept-set-timer'),
-    path('booked_appointments/', BookedAppointmentsAPI.as_view(), name='booked-appointments'),
-    path('requested_appointments/', RequestedAppointmentsAPI.as_view(), name='requested-appointments')
+    path('notify-doctor/<pk>/', notifyDoctor, name='notify_doctor'),
+    path('accept-set-timer/<pk>/', acceptSetTimer, name='accept_set_timer'),
+    path('booked/', BookedAppointmentsAPI.as_view(), name='booked'),
+    path('requested/', RequestedAppointmentsAPI.as_view(), name='requested')
 ]
 
 urlpatterns += router.urls

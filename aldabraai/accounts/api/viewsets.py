@@ -1,17 +1,22 @@
 ## REST FRAMEWORK IMPORTS
 from django.db.models import query
-from rest_framework import (
-    serializers, viewsets,
+from rest_framework import ( 
+    viewsets,
     generics,
     status
     )
-from rest_framework import response
 from rest_framework.generics import mixins
 from rest_framework.response import Response
-from rest_framework.decorators import action, api_view
+from rest_framework.decorators import (
+    action, 
+    api_view
+    )
 
 ## COMMON
-from django.shortcuts import get_object_or_404, redirect
+from django.shortcuts import (
+    get_object_or_404, 
+    redirect
+    )
 from django.utils.text import slugify
 
 
