@@ -2,5 +2,5 @@ from django.apps import AppConfig
 
 
 class DashboardConfig(AppConfig):
-    name = 'dashboard'
+    name = 'dashboards'
     verbose_name = 'Dashboard Application'
