@@ -22,6 +22,20 @@
     chmod 7 envset.sh
     
     ./envset
+    
+ ## Database setup
+  ## Windows
+  Run following scripts in admin windows **powershell**
+  
+  In .\cli-scripts run:
+  ````
+  .\dbset.ps1
+  ````
+  
+  run migration to see if db is correctly installed
+  ````
+  .\migration.ps1
+  ````
   
 ## start dev server
   ## Windows
@@ -62,16 +76,7 @@
    or
    ````
    npm run-scripts build
-   ````
-   
-## Database setup
-  ## Windows
-  Run following scripts in admin windows **powershell**
-  
-  In .\cli-scripts run:
-  ````
-  .\dbset.ps1
-  ````
+   ````   
 
 **Happy Hacking (o_o)**
    
