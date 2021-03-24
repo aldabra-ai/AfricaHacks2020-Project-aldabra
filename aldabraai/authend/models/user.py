@@ -6,7 +6,7 @@ class PatientUserManager(models.Manager):
     def get_queryset(self):
         return super().get_queryset().filter(profile_type='PT')
 
-class DoctorUsers(models.Manager):
+class DoctorUserManager(models.Manager):
     def get_queryset(self):
         return super().get_queryset().filter(profile_type='DR')
 class AldabraUserManager(BaseUserManager):
@@ -78,7 +78,7 @@ class User(AbstractBaseUser):
     objects = AldabraUserManager()
 
     patient_users = PatientUserManager()
-    doctor_users = DoctorUsers()
+    doctor_users = DoctorUserManager()
 
     USERNAME_FIELD = 'identifier'
     EMAIL_FIELD = 'email'

@@ -22,7 +22,9 @@ class Patient(models.Model):
 
     def get_absolute_url(self):
         return reverse('accounts:patient-detail', kwargs={
-                                                        'slug': self.slug}
+                                                        'slug': self.slug,
+                                                        'pk': self.pk
+                                                        }
             )
 
     def set_slug_as_username(self, username):

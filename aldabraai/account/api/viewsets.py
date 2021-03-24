@@ -146,13 +146,17 @@ class PatientProfileAPIView(viewsets.ModelViewSet):
     def create(self, *args, **kwargs):
         response = super(PatientProfileAPIView, self).create(*args, **kwargs)
         #return redirect('accounts:set-profile-slug')
-        return Response(response.data, )
+        return Response(response.data, status=status.HTTP_201_CREATED)
 
     def perform_create(self, serializer):
         user = self.request.user
         username = user.identifier
         full_name = user.full_name
-        serializer.save(owner=user, full_name=full_name, slug=username)
+        serializer.save(
+            owner=user, 
+            full_name=full_name, 
+            slug=username
+            )
 
 
 
