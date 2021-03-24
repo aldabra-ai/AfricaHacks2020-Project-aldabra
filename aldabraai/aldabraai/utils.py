@@ -1,5 +1,6 @@
 import random
 import string
+import uuid
 
 DEFAULT_CHAR_STRING = string.ascii_lowercase + string.digits
 

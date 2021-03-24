@@ -2,7 +2,10 @@
 from rest_framework import routers
 
 ## COMMON
-from django.urls import path
+from django.urls import (
+    path, 
+    include
+    )
 
 ## API CLASSES
 from .api import (
@@ -11,7 +14,7 @@ from .api import (
     PatientBankDetailAPI, 
     PatientIsurranceDetailAPI, 
     DoctorReviewAPI,
-    review_doctor,
+    ReviewDoctorAPI,
 
     #### Doctor's
     DoctorProfileAPIView, 
@@ -28,16 +31,17 @@ app_name = 'accounts'
 
 router = routers.DefaultRouter()
 router.register('patients', PatientProfileAPIView, basename='patient')
-router.register('doctors', DoctorProfileAPIView, basename='doctor')
-router.register('doctor-specializations', DoctorSpecializationAPI, basename='doctor_specialization')
-router.register('doctor-qualifications', DoctorQualificationAPI, basename='doctor_qualification')
 router.register('bank-details', PatientBankDetailAPI, basename='bank_details')
 router.register('insurrance-detail', PatientIsurranceDetailAPI, basename='insurrance_details')
 router.register('reviews', DoctorReviewAPI, basename='reviews')
+router.register('doctors', DoctorProfileAPIView, basename='doctor')
+router.register('doctors/doctor-specializations', DoctorSpecializationAPI, basename='doctor_specialization')
+router.register('doctors/doctor-qualifications', DoctorQualificationAPI, basename='doctor_qualification')
+
 
 urlpatterns = [
+    path('doctors/review/<slug>/', ReviewDoctorAPI.as_view(), name='review_doctor'),
     path('set-profile-slug/', setProfileSlug, name='set-profile-slug'),
-    path('doctors/review/<slug>/', review_doctor, name='review_doctor')
 ]
 
 urlpatterns += router.urls

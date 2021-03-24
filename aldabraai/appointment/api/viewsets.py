@@ -1,5 +1,8 @@
 #### REST FRAMEWORK ####
-from rest_framework.generics import mixins, ListAPIView
+from rest_framework.generics import (
+    mixins, 
+    #ListAPIView
+    )
 from rest_framework import (
     viewsets, 
     #permissions
@@ -17,13 +20,12 @@ from django.shortcuts import (
 #### SERIALIZERS ####
 from .serializers import (
     AppointmentSerializer, 
-    AppointmentSerializer,
     #RetrieveAppointmentSerializer,
     DoctorResaonSerializer,
     RescheduleAppointmentSerializer,
     SetPrepNurseSerializer,
-    BookedAppointmentSerializer,
-    RequestedAppointmentSerializer
+    #BookedAppointmentSerializer,
+    #RequestedAppointmentSerializer
 )
 
 #### MODELS ####
@@ -31,75 +33,58 @@ from ..models import Appointment
 
 
 
-
-class CreateAppointmentClass(mixins.CreateModelMixin, viewsets.GenericViewSet):
-    pass
-
 class UpdateViewsets(mixins.UpdateModelMixin, mixins.RetrieveModelMixin, viewsets.GenericViewSet):
     pass
 
-class ListViewsets(ListAPIView):
+
+
+class LIstReadUpdateViewset(
+    mixins.ListModelMixin,
+    mixins.RetrieveModelMixin,
+    mixins.UpdateModelMixin,
+    mixins.DestroyModelMixin,
+    viewsets.GenericViewSet
+):
     pass
 
-class BaseAppointmentAPI(viewsets.ModelViewSet):
-    queryset = Appointment.objects.all()
-    serializer_class = AppointmentSerializer
-
-    def create(self, request, *args, **kwargs):
-        response = super(BaseAppointmentAPI, self).create(request, *args, **kwargs)
-        
-        ## RETRIEVE APPOINTMENT ID AND GET CURRENTLY SAVED APPOINTMENT
-        pk = response.data['id']
-        appointment = get_object_or_404(Appointment, id=pk)
-
-        ###### THIS WILL BE CHANGED LATER BUT FOR NOW ########
-        appointment_id = f"appt_{+pk}"
-        appointment.appointment_id = appointment_id
-        appointment.save()
-        ######      CHANGE IMMINENT     ######################
-        
-        ## REDIRECT TO NOTIFY DOCTOR FUNCTION
-        url = appointment.get_notify_doctor_url()
-        return redirect(redirect_to=f'{url}')
-
-        
-    def perform_create(self, serializer):
-        serializer.save(patient=self.request.user)
 
 
-class BookedAppointmentsAPI(ListViewsets):
-    queryset = Appointment.booked_appointments.all()
-    serializer_class = BookedAppointmentSerializer
 
-class RequestedAppointmentsAPI(ListViewsets):
-    queryset = Appointment.requested_appointments.all()
-    serializer_class = RequestedAppointmentSerializer
+class BaseAppointmentAPI(LIstReadUpdateViewset):
+     queryset = Appointment.objects.all()
+     serializer_class = AppointmentSerializer
+     lookup_field = 'appointment_id'
+
+
 
 class RescheduleAppointmentAPI(UpdateViewsets):
     queryset = Appointment.objects.all()
     serializer_class = RescheduleAppointmentSerializer
+    lookup_field = 'appointment_id'
 
-    def update(self, request , pk=None, *args, **kwargs):
+    def update(self, request , appointment_id=None, *args, **kwargs):
         response = super(RescheduleAppointmentAPI, self).update(request, *args, **kwargs)
 
-        appointment = get_object_or_404(Appointment, pk=pk)
+        appointment = get_object_or_404(Appointment, appointment_id=appointment_id)
         url = appointment.get_accept_set_timer_url()
-        return redirect(redirect_to=f'{url}')
+        return redirect(url)
 
     def perform_update(self, serializer):
         return serializer.save()
 
 
+
 class AddPrepNurseAPI(UpdateViewsets):
     queryset = Appointment.objects.all()
     serializer_class = SetPrepNurseSerializer
+    lookup_field = 'appointment_id'
 
-    def update(self, request, pk=None,*args, **kwargs):
+    def update(self, request, appointment_id=None,*args, **kwargs):
         response = super(AddPrepNurseAPI, self).update(request, *args, **kwargs)
 
-        appointment = get_object_or_404(Appointment, pk=pk)
+        appointment = get_object_or_404(Appointment, appointment_id=appointment_id)
         url = appointment.get_accept_set_timer_url()
-        return redirect(redirect_to=f'{url}')
+        return redirect(url)
 
     def perform_update(self, serializer):
         return serializer.save()
@@ -119,11 +104,3 @@ class AppointmentDeclineReasonAPI(UpdateViewsets):
 
     def perform_update(self, serializer):
         return serializer.save()
-
-    
-
-        
-
-
-
-    

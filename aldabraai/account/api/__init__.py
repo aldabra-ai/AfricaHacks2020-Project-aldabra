@@ -11,4 +11,4 @@ from .viewsets import (
     DoctorSpecializationAPI
 )
 
-from .views import review_doctor
+from .views import ReviewDoctorAPI

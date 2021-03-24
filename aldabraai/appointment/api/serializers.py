@@ -5,13 +5,7 @@ from rest_framework import serializers
 from ..models import Appointment
 
 
-class RetrieveAppointmentSerializer(serializers.ModelSerializer):
-    patient = serializers.StringRelatedField()
-    booked_doctor_office = serializers.StringRelatedField()
-    appointment_date = serializers.DateField(read_only=True)
-    appointment_time = serializers.TimeField(read_only=True)
-    appointment_end_time = serializers.TimeField(read_only=True)
-    short_note = serializers.ReadOnlyField()
+class RetrieveAppointmentSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Appointment
         fields = [
@@ -26,13 +20,16 @@ class RetrieveAppointmentSerializer(serializers.ModelSerializer):
             ]
 
 
-class AppointmentSerializer(serializers.ModelSerializer):
+class AppointmentSerializer(serializers.HyperlinkedModelSerializer):
+    patient = serializers.HyperlinkedRelatedField(read_only=True, view_name='accounts:patient-detail')
+    booked_doctor_office = serializers.PrimaryKeyRelatedField(read_only=True)
     id = serializers.IntegerField(read_only=True)
-    appointment_id = serializers.CharField(read_only=True)
+    appointment_id = serializers.UUIDField(read_only=True)
     class Meta:
         model = Appointment
         fields = [ 
             'id',
+            'patient',
             'booked_doctor_office',
             'appointment_for',
             'appointment_date',
@@ -44,14 +41,10 @@ class AppointmentSerializer(serializers.ModelSerializer):
             ]
 
 
-    def get_appointment_id(self):
-        appointment_id = self.validated_data['appointment_id']
-        return appointment_id
-
             
 
 
-class DoctorResaonSerializer(serializers.ModelSerializer):
+class DoctorResaonSerializer(serializers.HyperlinkedModelSerializer):
     doctor_rej_reason = serializers.CharField(min_length=20)
     class Meta:
         fields = [
@@ -59,7 +52,7 @@ class DoctorResaonSerializer(serializers.ModelSerializer):
         ]
 
 
-class RescheduleAppointmentSerializer(serializers.ModelSerializer):
+class RescheduleAppointmentSerializer(serializers.HyperlinkedModelSerializer):
     appointment_date = serializers.DateField()
     appointment_time = serializers.TimeField()
     
@@ -72,7 +65,7 @@ class RescheduleAppointmentSerializer(serializers.ModelSerializer):
         ]
 
 
-class SetPrepNurseSerializer(serializers.ModelSerializer):
+class SetPrepNurseSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Appointment
         fields = [
@@ -80,7 +73,7 @@ class SetPrepNurseSerializer(serializers.ModelSerializer):
         ]
 
     
-class BookedAppointmentSerializer(serializers.ModelSerializer):
+class BookedAppointmentSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Appointment 
         fields = [
@@ -94,7 +87,7 @@ class BookedAppointmentSerializer(serializers.ModelSerializer):
             'booking_channel',
         ]
 
-class RequestedAppointmentSerializer(serializers.ModelSerializer):
+class RequestedAppointmentSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Appointment
         fields = [

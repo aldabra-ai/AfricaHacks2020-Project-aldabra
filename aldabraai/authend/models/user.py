@@ -117,4 +117,7 @@ class User(AbstractBaseUser):
             return 'A Patient'
 
     def get_absolute_url(self):
-        return reverse('user-page', kwargs={'slug': self.slug})
+        if self.is_doctor:
+            return reverse('accounts:doctor-detail', kwargs={'slug': self.slug})
+        elif self.is_patient:
+            return reverse('accounts:patient-detail', kwargs={'slug': self.slug})

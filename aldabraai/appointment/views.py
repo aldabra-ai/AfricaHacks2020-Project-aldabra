@@ -22,9 +22,9 @@ def sendEmailNotification(subject, email_address, sender, html_con, text_con=Non
     msg.send()
 
 ## Send Email Notification To Doctor on Appointment Request
-def notifyDoctor(request, pk):
+def notifyDoctor(request, appointment_id):
     ## get appointment and doctors email, well you should know that
-    appointment = get_object_or_404(Appointment, pk=pk)
+    appointment = get_object_or_404(Appointment, appointment_id=appointment_id)
     email_address = appointment.get_doctor_email
 
     ## appointment detail url
@@ -50,9 +50,9 @@ def notifyDoctor(request, pk):
     return redirect('home')
 
 
-def acceptSetTimer(request, pk):
+def acceptSetTimer(request, appointment_id):
     ## get appointment
-    appointment = get_object_or_404(Appointment, pk=pk)
+    appointment = get_object_or_404(Appointment, appointment_id=appointment_id)
 
     if appointment:
        try:
@@ -119,8 +119,8 @@ def acceptSetTimer(request, pk):
     return redirect('home')
 
 
-def declineDelete(request, pk):
-    appointment = get_object_or_404(Appointment, pk=pk)
+def declineDelete(request, appointment_id):
+    appointment = get_object_or_404(Appointment, appointment_id=appointment_id)
     
     if appointment:
         try:

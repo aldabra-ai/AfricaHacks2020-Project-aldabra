@@ -11,9 +11,9 @@ from django.urls import (
 ## API(s) entry points
 apis = [
     path('base/', include('base.urls')),
-    path('appointments/', include('appointments.urls', namespace='appointments')),
+    path('appointments/', include('appointment.urls', namespace='appointments')),
     path('hospitaldb/', include('hospitaldb.urls', namespace='hospitaldb')),
-    path('accounts/', include('accounts.urls', namespace='accounts')),
+    path('accounts/', include('account.urls', namespace='accounts')),
 ]
 
 urlpatterns = [

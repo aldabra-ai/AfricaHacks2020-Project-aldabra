@@ -69,6 +69,7 @@ class DoctorReviewSerializer(serializers.ModelSerializer):
     review_date = serializers.DateTimeField(read_only=True)
     review_state = serializers.ReadOnlyField()
     reviewed_doctor = serializers.PrimaryKeyRelatedField(read_only=True)
+    slug = serializers.SlugField(read_only=True)
   
     class Meta:
         model = PatientReview
@@ -85,7 +86,8 @@ class DoctorReviewSerializer(serializers.ModelSerializer):
             "not_recommended_reason",
             "review_date",
             "publish",
-            "review_state"
+            "review_state",
+            "slug"
 
         ]
 ########################################## ****** ###################################
