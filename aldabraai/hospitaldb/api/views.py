@@ -1,5 +1,4 @@
 from rest_framework.generics import mixins
-from rest_framework import viewsets
 from rest_framework.decorators import action
 
 from ..models import DoctorOffice

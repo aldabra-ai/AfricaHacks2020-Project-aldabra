@@ -6,7 +6,7 @@ from ..models import (
                       Patient,
                       PatientBankDetail,
                       PatientReview,
-                      PatientInsurranceDetail,
+                      PatientInsuranceDetail,
                       Doctor
                       )
 
@@ -19,9 +19,9 @@ from ..models import (
                       )
 
 ######################## PATIENT SERIALIZERS ##########################
-class PatientDetailSerializer(serializers.HyperlinkedModelSerializer):
-    id = serializers.ReadOnlyField(read_only=True)
-    full_name = serializers.ReadOnlyField(read_only=True)
+class PatientDetailSerializer(serializers.ModelSerializer):
+    id = serializers.PrimaryKeyRelatedField(read_only=True)
+    full_name = serializers.PrimaryKeyRelatedField(read_only=True)
     
     class Meta:
         model = Patient
@@ -35,7 +35,7 @@ class PatientDetailSerializer(serializers.HyperlinkedModelSerializer):
             "family_or_emerg_phone"
         ]
 
-class PatientBankDetailSerializer(serializers.HyperlinkedModelSerializer):
+class PatientBankDetailSerializer(serializers.ModelSerializer):
     patient = serializers.PrimaryKeyRelatedField(read_only=True)
 
     class Meta:
@@ -50,16 +50,16 @@ class PatientBankDetailSerializer(serializers.HyperlinkedModelSerializer):
             "patient"
         ]
 
-class PatientInsurranceDetailSerializer(serializers.HyperlinkedModelSerializer):
+class PatientInsuranceDetailSerializer(serializers.ModelSerializer):
     patient = serializers.PrimaryKeyRelatedField(read_only=True)
     bank_details = PatientBankDetailSerializer(read_only=True)
     class Meta:
-        model = PatientInsurranceDetail
+        model = PatientInsuranceDetail
         fields = [
-            "insurrance_company",
-            "insurrance_name",
-            "insurrance_account_name",
-            "insurrance_account_no",
+            "Insurance_company",
+            "Insurance_name",
+            "Insurance_account_name",
+            "Insurance_account_no",
             "patient",
             "bank_details"
         ]
@@ -95,7 +95,7 @@ class DoctorReviewSerializer(serializers.ModelSerializer):
 ########################################## DOCTOR SERIALIZERS #######################
 class DoctorDetailSerializer(serializers.ModelSerializer):
     full_name = serializers.ReadOnlyField()
-    doctor_id = serializers.CharField(max_length=10)
+    doctor_id = serializers.CharField(max_length=10, read_only=True)
     practicing_from = serializers.DateField()
 
     class Meta:
