@@ -69,13 +69,18 @@ class ReviewDoctorAPI(CreateAPIView):
         
         return Response(response.data, status=status.HTTP_201_CREATED)
 
-    def perfome_create(self, serializer):
+
+    def post(self, request, *args, **kwargs):
+        return self.create(request, *args, **kwargs)
+
+
+    def perform_create(self, serializer):
         doctor = get_object_or_404(Doctor, slug=self.kwargs['slug'])
-        review_name = serializer.data['review_name']
+        review_name = serializer.validated_data['review_name']
         rand_string = generate_random_string()
         slug = slugify(f'{review_name + rand_string}')
 
-        if serializer.data['publish']:
+        if serializer.validated_data['publish']:
             serializer.save(
                 owner=self.request.user, 
                 reviewed_doctor=doctor,
@@ -89,6 +94,3 @@ class ReviewDoctorAPI(CreateAPIView):
                 review_state='DFT',
                 slug=slug
                 )
-
-    def post(self, request, *args, **kwargs):
-        return self.create(request, *args, **kwargs)

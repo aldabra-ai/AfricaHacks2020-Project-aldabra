@@ -12,8 +12,10 @@ DEBUG = True
 
 # SECURITY WARNING: update this when you have the production host
 ALLOWED_HOSTS = [
-    '0.0.0.0', 
-    '127.0.0.1'
+    #'0.0.0.0', 
+    '127.0.0.1',
+    'localhost',
+    'aldabraai',
     ]
 
 DATABASES = {
@@ -82,9 +84,10 @@ REST_FRAMEWORK = {
 
     'TEST_REQUEST_DEFAULT_FORMAT': 'json', 
 
-    # 'DEFAULT_AUTHENTICATION_CLASSES': [
-    #     'rest_framework.authentication.BasicAuthentication',
-    #     'rest_framework.authentication.TokenAuthentication',
-    # ],
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+         'rest_framework.authentication.BasicAuthentication',
+         'rest_framework.authentication.SessionAuthentication',
+         #'rest_framework.authentication.TokenAuthentication',
+     ],
 
 }

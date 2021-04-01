@@ -8,6 +8,8 @@ from django.urls import (
     include
 )
 
+app_name = 'aldabra.ai'
+
 ## API(s) entry points
 apis = [
     path('base/', include('base.urls')),
@@ -20,6 +22,6 @@ urlpatterns = [
     # FRONTEND APP --> DONT PLAY WITH THIS OR WE LOSE OUR NICE DISPLAY 
     path('', include('frontend.urls')),
     # API ENTRY version one --> DONT PLAY WITH THIS OR WE LOSE DATA
-    path('apis/v1/', include(apis)),
+    path('api/v1/', include(apis)),
     path('admin/', admin.site.urls),
 ]

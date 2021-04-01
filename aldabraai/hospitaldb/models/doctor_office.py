@@ -1,6 +1,7 @@
 from django.db import models
 from django.conf import settings
 from .hospital import Hospital
+from django.shortcuts import reverse
 
 
 class DoctorOffice(models.Model):
@@ -22,6 +23,10 @@ class DoctorOffice(models.Model):
          verbose_name = "Doctor's Office"
          verbose_name_plural = "Doctor Offices"
 
+    def get_absolute_url(self):
+        return reverse('hospitaldb:doctor-office-detail', kwargs={
+            'office_owner': self.office_owner
+            })
 
 
 class OfficeSchedule(models.Model):

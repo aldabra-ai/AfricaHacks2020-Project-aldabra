@@ -60,6 +60,7 @@ def acceptSetTimer(request, appointment_id):
                pass
            else:
                appointment.setState('AC') ## set appointment state AC:Accepted
+               appointment.booked = True
                appointment.save()
 
            date = appointment.appointment_date
@@ -128,6 +129,7 @@ def declineDelete(request, appointment_id):
                 pass
             else: 
                 appointment.setState('DE') ## DE:Decline
+                appointment.booked = False
                 appointment.save()
 
             ## THIS IS FOR DEVELOPMENT PURPOSE USING DJANGO SMTP MAIL TOOL

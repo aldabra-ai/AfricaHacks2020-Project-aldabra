@@ -15,14 +15,14 @@ class PatientBankDetail(models.Model):
     def __str__(self):
         return self.account_name
 
-class PatientInsurranceDetail(models.Model):
-    insurrance_company = models.CharField(max_length=500)
-    insurrance_name = models.CharField(max_length=300)
-    insurrance_account_name = models.CharField(max_length=300)
-    insurrance_account_no = models.CharField(max_length=12)
+class PatientInsuranceDetail(models.Model):
+    insurance_company = models.CharField(max_length=500)
+    insurance_name = models.CharField(max_length=300)
+    insurance_account_name = models.CharField(max_length=300)
+    insurance_account_no = models.CharField(max_length=12)
     patient = models.OneToOneField(settings.AUTH_USER_MODEL, related_name='inssurance_details', on_delete=models.CASCADE)
     bank_details = models.OneToOneField(PatientBankDetail, on_delete=models.PROTECT, blank=True, null=True)
 
     def __str__(self):
-        return self.insurrance_account_name
+        return self.insurance_account_name
 

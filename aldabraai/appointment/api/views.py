@@ -72,6 +72,7 @@ class BookAppointmentAPI(CreateAPIView):
         return self.create(request, *args, **kwargs) 
 
     def perform_create(self, serializer):
+        user = self.request.user
         doctor = User.objects.get(identifier=self.kwargs['office_owner'])
         doctor_office = doctor.doctor_office
         appointment_id = generate_uuid(
@@ -80,10 +81,20 @@ class BookAppointmentAPI(CreateAPIView):
             use_time=True, 
             rand=False
             )
-        serializer.save(
-            patient=self.request.user, 
-            booked_doctor_office=doctor_office, 
-            appointment_id=appointment_id
+
+        if len(serializer.validated_data['phone_number']) == 0:     #check if the phone number field was field
+            phone_number = user.patient_profile.phone
+            serializer.save(
+                patient=self.request.user, 
+                phone_number=phone_number,
+                booked_doctor_office=doctor_office, 
+                appointment_id=appointment_id
+            )
+        else:
+            serializer.save(
+                patient=self.request.user,
+                booked_doctor_office=doctor_office,
+                appointment_id = appointment_id
             )
 
 

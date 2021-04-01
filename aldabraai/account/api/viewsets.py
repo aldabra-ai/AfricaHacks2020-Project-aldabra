@@ -24,7 +24,7 @@ from django.utils.text import slugify
 from ..models import (
     #### PATIENT Models ####
     Patient, 
-    PatientInsurranceDetail, 
+    PatientInsuranceDetail, 
     PatientBankDetail, 
     PatientReview, 
 
@@ -39,7 +39,7 @@ from .serializers import (
     #### PATIENT SERIALIZERS ####
     PatientDetailSerializer,
     PatientBankDetailSerializer,
-    PatientInsurranceDetailSerializer,
+    PatientInsuranceDetailSerializer,
     DoctorReviewSerializer,
 
     #### DOCTOR SERIALIZERS ####
@@ -194,28 +194,28 @@ class PatientBankDetailAPI(CreateUpdateRetrieveViewset):
 
 
 
-class PatientIsurranceDetailAPI(CreateUpdateRetrieveViewset):
-    queryset = PatientInsurranceDetail.objects.all()
-    serializer_class = PatientInsurranceDetailSerializer
+class PatientInsuranceDetailAPI(CreateUpdateRetrieveViewset):
+    queryset = PatientInsuranceDetail.objects.all()
+    serializer_class = PatientInsuranceDetailSerializer
     lookup_field = 'patient'
 
     def list(self, request):
         queryset = self.get_queryset()
-        serializer = PatientInsurranceDetailSerializer(queryset, many=True)
+        serializer = PatientInsuranceDetailSerializer(queryset, many=True)
         return Response(serializer.data)
 
     def retrieve(self, request, patient):
         queryset = self.get_queryset()
         username = request.user.identifier
-        serializer = PatientInsurranceDetailSerializer()
+        serializer = PatientInsuranceDetailSerializer()
         if patient == username:
             details = get_object_or_404(queryset, patient=request.user)
-            serializer = PatientInsurranceDetailSerializer(details)
+            serializer = PatientInsuranceDetailSerializer(details)
             return Response(serializer.data)
         return Response(serializer.data, status=status.HTTP_401_UNAUTHORIZED)
 
     def create(self, request, *args, **kwargs):
-        response = super(PatientIsurranceDetailAPI, self).create(request, *args, **kwargs)
+        response = super(PatientIsuranceDetailAPI, self).create(request, *args, **kwargs)
         
         return Response(response.data, status=status.HTTP_201_CREATED)
 
