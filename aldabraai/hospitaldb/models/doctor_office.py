@@ -24,7 +24,7 @@ class DoctorOffice(models.Model):
          verbose_name_plural = "Doctor Offices"
 
     def get_absolute_url(self):
-        return reverse('hospitaldb:doctor-office-detail', kwargs={
+        return reverse('hospitaldb:offices-detail', kwargs={
             'office_owner': self.office_owner
             })
 
@@ -37,15 +37,15 @@ class OfficeSchedule(models.Model):
     ]
 
     office = models.ForeignKey(DoctorOffice, on_delete=models.CASCADE)
-    day_available = models.DateField()
+    day_available = models.DateField(unique=True)
     start_time = models.TimeField()
-    end_time = models.TimeField()
+    end_time = models.TimeField(blank=True, null=True)
     availability = models.CharField(max_length=2, choices=AVAILABILITY, default=AVAILABILITY[0])
-    reason_for_unavailability = models.CharField(max_length=2000)
+    reason_for_unavailability = models.CharField(max_length=2000, blank=True)
 
 
     def __str__(self):
-        return self.office
+        return self.office.office_name
 
     class Meta:
         verbose_name = "Doctor's Schedule"

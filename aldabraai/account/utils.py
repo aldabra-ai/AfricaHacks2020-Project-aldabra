@@ -3,8 +3,9 @@ import string
 import uuid
 
 DEFAULT_CHAR_STRING = string.ascii_lowercase + string.digits
+UPPERCASE_CHAR_STRING = string.ascii_uppercase + string.digits
 
-def generate_random_string(chars=DEFAULT_CHAR_STRING, size=10):
+def generate_random_string(size:int, chars=UPPERCASE_CHAR_STRING):
     return ''.join(random.choice(chars) for _ in range(size))
 
 

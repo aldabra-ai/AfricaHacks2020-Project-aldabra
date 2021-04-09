@@ -14,7 +14,7 @@ app_name = 'aldabra.ai'
 apis = [
     path('base/', include('base.urls')),
     path('appointments/', include('appointment.urls', namespace='appointments')),
-    path('hospitaldb/', include('hospitaldb.urls', namespace='hospitaldb')),
+    path('hospitals/', include('hospitaldb.urls', namespace='hospitals')),
     path('accounts/', include('account.urls', namespace='accounts')),
 ]
 

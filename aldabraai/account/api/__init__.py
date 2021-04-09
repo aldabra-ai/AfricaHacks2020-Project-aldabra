@@ -1,7 +1,7 @@
 from .viewsets import (
     PatientProfileAPIView, 
     PatientBankDetailAPI, 
-    PatientIsurranceDetailAPI, 
+    PatientInsuranceDetailAPI, 
     DoctorReviewAPI, 
     #review_doctor,
 

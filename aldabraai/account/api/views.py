@@ -25,7 +25,7 @@ from ..utils import (
 ## PATIENT MODELS
 from ..models import (
     #Patient, 
-    #PatientInsurranceDetail, 
+    #PatientInsuranceDetail, 
     #PatientBankDetail, 
     #PatientReview, 
 

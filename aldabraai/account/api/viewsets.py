@@ -18,6 +18,10 @@ from django.shortcuts import (
     redirect
     )
 from django.utils.text import slugify
+from ..utils import (
+    generate_random_string,
+    generate_uuid,
+)
 
 
 ## PATIENT MODELS
@@ -215,7 +219,7 @@ class PatientInsuranceDetailAPI(CreateUpdateRetrieveViewset):
         return Response(serializer.data, status=status.HTTP_401_UNAUTHORIZED)
 
     def create(self, request, *args, **kwargs):
-        response = super(PatientIsuranceDetailAPI, self).create(request, *args, **kwargs)
+        response = super(PatientInsuranceDetailAPI, self).create(request, *args, **kwargs)
         
         return Response(response.data, status=status.HTTP_201_CREATED)
 

@@ -12,7 +12,7 @@ from .api import (
     #### Patient's
     PatientProfileAPIView, 
     PatientBankDetailAPI, 
-    PatientIsurranceDetailAPI, 
+    PatientInsuranceDetailAPI, 
     DoctorReviewAPI,
     ReviewDoctorAPI,
 
@@ -32,7 +32,7 @@ app_name = 'accounts'
 router = routers.DefaultRouter()
 router.register('patients', PatientProfileAPIView, basename='patient')
 router.register('bank-details', PatientBankDetailAPI, basename='bank_details')
-router.register('insurrance-detail', PatientIsurranceDetailAPI, basename='insurrance_details')
+router.register('insurrance-detail', PatientInsuranceDetailAPI, basename='insurrance_details')
 router.register('reviews', DoctorReviewAPI, basename='reviews')
 router.register('doctors', DoctorProfileAPIView, basename='doctor')
 router.register('doctors/doctor-specializations', DoctorSpecializationAPI, basename='doctor_specialization')

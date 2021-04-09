@@ -1,5 +1,16 @@
 from django.contrib import admin
-from .models import Patient,Doctor,DoctorSpecialization,DoctorSpecialization,DoctorQualification,Specialization,PatientReview,PatientBankDetail,PatientInsurranceDetail, AffiliatedHospital
+from .models import (
+    Patient,
+    Doctor,
+    DoctorSpecialization,
+    DoctorSpecialization,
+    DoctorQualification,
+    Specialization,
+    PatientReview,
+    PatientBankDetail,
+    PatientInsuranceDetail,
+    AffiliatedHospital
+)
 
 @admin.register(Patient)
 class PatientProfileAdmin(admin.ModelAdmin):
@@ -198,31 +209,31 @@ class PatientBankDetailAdmin(admin.ModelAdmin):
         ]
 
 
-@admin.register(PatientInsurranceDetail)
-class PatientInsurranceDetailAdmin(admin.ModelAdmin):
+@admin.register(PatientInsuranceDetail)
+class PatientInsuranceDetailAdmin(admin.ModelAdmin):
     list_display = [
-        'insurrance_company',
-        'insurrance_name', 
-        'insurrance_account_name',  
-        'insurrance_account_no',
+        'insurance_company',
+        'insurance_name', 
+        'insurance_account_name',  
+        'insurance_account_no',
         'patient',
         ]
     
     list_filter = [
-        'insurrance_company',
-        'insurrance_name', 
-        'insurrance_account_name',  
-        'insurrance_account_no',
+        'insurance_company',
+        'insurance_name', 
+        'insurance_account_name',  
+        'insurance_account_no',
         'patient',
         ]
 
     list_per_page = 100
 
     search_fields = [
-        'insurrance_company',
-        'insurrance_name', 
-        'insurrance_account_name',  
-        'insurrance_account_no',
+        'insurance_company',
+        'insurance_name', 
+        'insurance_account_name',  
+        'insurance_account_no',
         'patient',
         ]
 

@@ -33,7 +33,12 @@ from ..models import Appointment
 
 
 
-class UpdateViewsets(mixins.UpdateModelMixin, mixins.RetrieveModelMixin, viewsets.GenericViewSet):
+class UpdateViewsets(
+    mixins.UpdateModelMixin, 
+    mixins.RetrieveModelMixin, 
+    viewsets.GenericViewSet
+    
+    ):
     pass
 
 
@@ -46,8 +51,6 @@ class LIstReadUpdateViewset(
     viewsets.GenericViewSet
 ):
     pass
-
-
 
 
 class BaseAppointmentAPI(LIstReadUpdateViewset):
