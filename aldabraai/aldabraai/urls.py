@@ -23,5 +23,6 @@ urlpatterns = [
     path('', include('frontend.urls')),
     # API ENTRY version one --> DONT PLAY WITH THIS OR WE LOSE DATA
     path('api/v1/', include(apis)),
+    path('api/auth/', include('authend.urls')),
     path('admin/', admin.site.urls),
 ]

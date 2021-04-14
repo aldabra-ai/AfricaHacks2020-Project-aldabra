@@ -2,6 +2,8 @@ from django.db import models
 from django.contrib.auth.base_user import AbstractBaseUser, BaseUserManager
 from django.shortcuts import reverse
 
+from django.contrib.auth.models import Group
+
 class PatientUserManager(models.Manager):
     def get_queryset(self):
         return super().get_queryset().filter(profile_type='PT')
@@ -61,11 +63,11 @@ class User(AbstractBaseUser):
         ('DR', 'Doctor'),
     ]
 
-    first_name = models.CharField('Users First Name', max_length=200, blank=True)
-    last_name = models.CharField('Users Last Name', max_length=200, blank=True)
-    date_of_birth = models.DateField('Users Date Of Birth', help_text='YYY-MMM-DDD')
-    identifier = models.CharField('Users Username', max_length=300, unique=True)
-    email = models.EmailField('Users Email Address', unique=True)
+    first_name = models.CharField('First Name', max_length=200, blank=True)
+    last_name = models.CharField('Last Name', max_length=200, blank=True)
+    date_of_birth = models.DateField('Date Of Birth', help_text='YYY-MMM-DDD')
+    identifier = models.CharField('Username', max_length=300, unique=True)
+    email = models.EmailField('Email Address', unique=True)
     profile_type = models.CharField(max_length=10, choices=PROFILE_TYPE, default=PROFILE_TYPE[0])
 
     last_login = models.DateTimeField(auto_now_add=True)
@@ -77,8 +79,10 @@ class User(AbstractBaseUser):
 
     objects = AldabraUserManager()
 
-    patient_users = PatientUserManager()
-    doctor_users = DoctorUserManager()
+    patient_users= PatientUserManager()
+    doctor_users= DoctorUserManager()
+
+    groups = models.ManyToManyField(Group, blank=True)
 
     USERNAME_FIELD = 'identifier'
     EMAIL_FIELD = 'email'

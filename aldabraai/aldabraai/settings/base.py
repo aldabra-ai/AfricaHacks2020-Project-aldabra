@@ -57,21 +57,29 @@ INSTALLED_APPS = [
     ## OWN APP(s) 
     # AUTH END
     'authend.apps.AuthendConfig',
+
     # COMMON
     'base.apps.BaseConfig',
     'account.apps.AccountConfig',
     'hospitaldb.apps.HospitaldbConfig',
+
     # FEATURE(s)
     'dashboard.apps.DashboardConfig',
     'appointment.apps.AppointmentConfig',
     'queuein.apps.QueueinConfig',
     'mhealth.apps.MhealthConfig',
     'search.apps.SearchConfig',
+
     # FRONT END
     'frontend.apps.FrontendConfig',
 
-    ## API FRAMEWORK
+    ## THIRD PARTY APPS
+    # API FRAMEWORK
     'rest_framework',
+
+    # AUTHORIZATION LIBRARY
+    'knox',
+
 
 ]
 
@@ -178,3 +186,16 @@ EMAIL_PORT = '******'
 EMAIL_USE_SSL = '******'
 EMAIL_HOST_USER = '******'
 EMAIL_HOST_PASSWORD = '******'
+
+REST_FRAMEWORK = {
+
+    'TEST_REQUEST_DEFAULT_FORMAT': 'json', 
+
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'knox.auth.TokenAuthentication',
+         #'rest_framework.authentication.BasicAuthentication',
+         #'rest_framework.authentication.SessionAuthentication',
+         #'rest_framework.authentication.TokenAuthentication',
+     ],
+
+}
