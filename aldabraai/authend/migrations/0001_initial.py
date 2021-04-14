@@ -19,7 +19,7 @@ class Migration(migrations.Migration):
                 ('first_name', models.CharField(max_length=200, verbose_name='Users First Name')),
                 ('last_name', models.CharField(max_length=200, verbose_name='Users Last Name')),
                 ('date_of_birth', models.DateField(verbose_name='Users Date Of Birth')),
-                ('username', models.CharField(max_length=300, unique=True, verbose_name='Users Username')),
+                ('identifier', models.CharField(max_length=300, unique=True, verbose_name='Users Username')),
                 ('email', models.EmailField(max_length=254, unique=True, verbose_name='Users Email Address')),
                 ('profile_type', models.CharField(choices=[('PT', 'Patient'), ('DR', 'Doctor')], max_length=10)),
                 ('last_login', models.DateTimeField(auto_now_add=True)),
