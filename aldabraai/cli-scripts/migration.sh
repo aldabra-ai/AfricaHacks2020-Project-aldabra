@@ -1,3 +1,3 @@
 
 
-cd .. && python manage.py makemigrations && python mange.py migrate
+cd .. && python3 manage.py makemigrations && python3 mange.py migrate

@@ -70,6 +70,8 @@ class User(AbstractBaseUser):
     email = models.EmailField('Email Address', unique=True)
     profile_type = models.CharField(max_length=10, choices=PROFILE_TYPE, default=PROFILE_TYPE[0])
 
+    user_id = models.UUIDField(blank=True)
+
     last_login = models.DateTimeField(auto_now_add=True)
     is_active = models.BooleanField(default=True)
     is_admin = models.BooleanField(default=False)

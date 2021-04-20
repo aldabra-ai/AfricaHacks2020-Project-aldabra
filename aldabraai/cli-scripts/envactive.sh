@@ -1,3 +1,3 @@
 
 
-source ../../aldabra-env/bin/activate
+cd ../../ && source ./aldabra-env/bin/activate && cd ./aldabraai

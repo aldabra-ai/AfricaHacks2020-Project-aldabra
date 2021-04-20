@@ -1,19 +1,19 @@
 {
-  "name": "my-webpack-project",
-  "version": "1.0.0",
-  "description": "My webpack project",
+  "name": "aldabra.ai",
+  "version": "0.0.0",
+  "description": "Aldabra.ai React frontend app",
   "main": "index.js",
   "scripts": {
     "dev": "webpack --mode development --watch",
     "build": "webpack",
-    "start": "run-scripts start"
+    "start": "react-scripts start"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/aldabra-ai/AfricaHacks2020-Project-aldabra.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "Tshembani",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/aldabra-ai/AfricaHacks2020-Project-aldabra/issues"
@@ -24,7 +24,6 @@
     "@babel/preset-env": "^7.12.11",
     "@babel/preset-react": "^7.12.10",
     "@webpack-cli/init": "^1.1.1",
-    "babel-loader": "^8.2.2",
     "babel-plugin-syntax-dynamic-import": "^6.18.0",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "core-js": "^3.8.2",
@@ -48,6 +47,13 @@
     "redux": "^4.0.5",
     "redux-devtools-extension": "^2.13.8",
     "redux-thunk": "^2.3.0",
-    "tachyons": "^4.12.0"
+    "tachyons": "^4.12.0",
+    "@testing-library/jest-dom": "^5.11.4",
+    "@testing-library/react": "^11.1.0",
+    "@testing-library/user-event": "^12.1.10",
+    "gh-pages": "^3.1.0",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "4.0.3",
+    "web-vitals": "^1.0.1"
   }
 }

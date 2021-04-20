@@ -20,7 +20,7 @@ apis = [
 
 urlpatterns = [
     # FRONTEND APP --> DONT PLAY WITH THIS OR WE LOSE OUR NICE DISPLAY 
-    path('', include('frontend.urls')),
+    path('', include('frontend.urls', namespace='frontend')),
     # API ENTRY version one --> DONT PLAY WITH THIS OR WE LOSE DATA
     path('api/v1/', include(apis)),
     path('api/auth/', include('authend.urls')),

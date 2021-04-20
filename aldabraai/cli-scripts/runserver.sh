@@ -1,3 +1,3 @@
 
 
-cd .. && python manage.py runserver 3000
+cd .. && python3 manage.py runserver 3000
