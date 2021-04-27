@@ -3,3 +3,4 @@ from django.views.generic import TemplateView
 
 class AppVIew(TemplateView):
     template_name = 'frontend/index.html'
+

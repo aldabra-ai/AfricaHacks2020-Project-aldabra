@@ -15,12 +15,11 @@ import blue from "@material-ui/core/colors/blue";
 
 const useStyles = makeStyles((theme) => ({
   palette: {
-    primary: '#FFFFFF',
-    
+    primary: "#FFFFFF",
   },
   grow: {
     flexGrow: 1,
-    flex:1
+    flex: 1,
   },
   title: {
     backgroundColor: "#3700B3",
@@ -30,14 +29,12 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: "#3700B3",
     color: "#FFDCE8",
     boxShadow: "0px 0px 0px 0px",
-
   },
   header1: {
-    backgroundColor: "#E59BBC",
+    backgroundColor: "#D6B1FF",
     color: "10px 10px 10px rgba(216,191,216)",
-    boxShadow:"0px 0px 0px 0px",
+    boxShadow: "0px 0px 0px 0px",
     padding: 0,
-    
   },
   search: {
     position: "relative",
@@ -104,7 +101,6 @@ export default function NavBar() {
             aldabra.ai
           </Typography>
 
-          
           <Button component={Link} to="/home" color="inherit">
             Home
           </Button>
@@ -118,45 +114,45 @@ export default function NavBar() {
             Contact
           </Button>
           <Button component={Link} to="/login" color="inherit">
-            Login
+            Login / Sign Up
           </Button>
-          <Button component={Link} to="/signup" color="inherit">
+          {/* <Button component={Link} to="/signup" color="inherit">
             Sign Up
-          </Button>
+          </Button> */}
           {/* <Button color='inherit'></Button> */}
         </Toolbar>
-        <AppBar position='sticky' className={classes.header1}>
-          <Toolbar align ='center' >
-          <div className={classes.search}>
-            <div className={classes.searchIcon}>
-              <SearchIcon />
+        <AppBar position="sticky" className={classes.header1}>
+          <Toolbar align="center">
+            <div className={classes.search}>
+              <div className={classes.searchIcon}>
+                <SearchIcon />
+              </div>
+              <InputBase
+                placeholder="Doctor...."
+                classes={{
+                  root: classes.inputRoot,
+                  input: classes.inputInput,
+                }}
+                inputProps={{ "aria-label": "search" }}
+              />
             </div>
-            <InputBase
-              placeholder="Doctor...."
-              classes={{
-                root: classes.inputRoot,
-                input: classes.inputInput,
-              }}
-              inputProps={{ "aria-label": "search" }}
-            />
-          </div>
-          <div className={classes.search}>
-            <div className={classes.searchIcon}>
-              <SearchIcon />
+            <div className={classes.search}>
+              <div className={classes.searchIcon}>
+                <SearchIcon />
+              </div>
+              <InputBase
+                placeholder="Location...."
+                classes={{
+                  root: classes.inputRoot,
+                  input: classes.inputInput,
+                }}
+                inputProps={{ "aria-label": "search" }}
+              />
             </div>
-            <InputBase
-              placeholder="Location...."
-              classes={{
-                root: classes.inputRoot,
-                input: classes.inputInput,
-              }}
-              inputProps={{ "aria-label": "search" }}
-            />
-          </div>
           </Toolbar>
         </AppBar>
       </AppBar>
-      
+
       {/* <Card/> */}
       {/* {renderMobileMenu}
       {renderMenu} */}

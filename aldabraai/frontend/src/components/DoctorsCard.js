@@ -11,17 +11,15 @@ import CardHeader from "@material-ui/core/CardHeader";
 import { Avatar, IconButton, makeStyles } from "@material-ui/core";
 import AssignmentIcon from "@material-ui/icons/Assignment";
 
-
-
 //makeStyles aka CSS for Cardds
 const useStyles = makeStyles({
   root: {
     minWidth: 275,
   },
   bullet: {
-    display: 'inline-block',
-    margin: '0 2px',
-    transform: 'scale(0.8)',
+    display: "inline-block",
+    margin: "0 2px",
+    transform: "scale(0.8)",
   },
   title: {
     fontSize: 14,
@@ -66,6 +64,5 @@ export default function DoctorsCard(props) {
         </Button>
       </CardActions>
     </Card>
-    
   );
 }

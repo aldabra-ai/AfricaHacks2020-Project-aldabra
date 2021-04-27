@@ -17,52 +17,54 @@ import AssignmentIndOutlinedIcon from "@material-ui/icons/AssignmentIndOutlined"
 
 //Component for sign up
 const SignUp = () => {
-  const paperStyle = { padding: "0px 20px", width: 300, margin: "7px auto" ,
-  backgroundColor: 'rgba(255, 255, 255, 0.3)',
-  backgroundImage: 'linear-gradient(to bottom right, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0)',
-  boxShadow: "10px 10px 10px rgba(216,191,216)",
-  backdropFilter: 'blur(7px)',
-  boarderRadius:20,
-  boarderLeft: 'solid 1px rgba(255, 255, 255, 0.3)',
-  boarderTop: 'solid 1px rgba(255, 255, 255, 0.8)',
-
-        };
+  const paperStyle = {
+    padding: 20,
+    width: 300,
+    margin: "0 auto",
+    backgroundColor: "rgba(255, 255, 255, 0.3)",
+    backgroundImage:
+      "linear-gradient(to bottom right, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0)",
+    boxShadow: "10px 10px 10px rgba(214,177,255)",
+    backdropFilter: "blur(7px)",
+    boarderRadius: 20,
+    boarderLeft: "solid 1px rgba(255, 255, 255, 0.3)",
+    boarderTop: "solid 1px rgba(255, 255, 255, 0.8)",
+  };
   const headerStyle = { margin: 0 };
   const avatarStyle = { backgroundColor: "#3700B3" };
-  const buttonStyle = { margin: "8px 0", backgroundColor: "#FFDCE8" };
+  const buttonStyle = { margin: "8px 0", backgroundColor: "#2EC5CE" };
   const checkboxStyle = { backgroundColor: "#FFDCE8" };
-
+  const marginTop = { marginTop: 5 };
   return (
     <Grid>
-      <Paper elevation={20} style={paperStyle}>
+      <Paper style={paperStyle}>
         <Grid align="center">
           <Avatar style={avatarStyle}>
             <AssignmentIndOutlinedIcon />
           </Avatar>
-          <h2 style={headerStyle}>Sign Up!</h2>
+          <h4 style={headerStyle}>Sign Up!</h4>
           <Typography variant="caption">
             You have chance to create new account if you really want to.
           </Typography>
         </Grid>
         <form>
-          {/* This h6 tag is for the spacing from top to bottom never delete it*/}
-          <h6></h6>
           <TextField
             fullWidth
             label="Name"
             placeholder="Enter Name"
-            variant="outlined"
+            // variant="outlined"
           />
           {/* This h6 tag is for the spacing from top to bottom never delete it*/}
-          <h6></h6>
+          {/* <h6></h6> */}
           <TextField
             fullWidth
             label="Email"
             placeholder="Enter Email"
-            variant="outlined"
+            // variant="outlined"
           />
           {/* This h6 tag is for the spacing from top to bottom never delete it*/}
-          <h8></h8>
+          {/* I want to create a style for the radioBTNS to complement the theme as for the color purple */}
+          <h6></h6>
           <FormControl component="fieldset">
             <FormLabel component="legend">Gender</FormLabel>
             <RadioGroup
@@ -88,34 +90,34 @@ const SignUp = () => {
             fullWidth
             label="Phone Number"
             placeholder="Enter Phone Number"
-            variant="outlined"
+            // variant="outlined"
           />
           {/* This h6 tag is for the spacing from top to bottom never delete it*/}
-          <h6></h6>
+          {/* <h6></h6> */}
           <TextField
             fullWidth
             label="Password"
             placeholder="Enter Password"
-            variant="outlined"
+            // variant="outlined"
           />
           {/* This h6 tag is for the spacing from top to bottom never delete it*/}
-          <h6></h6>
+          {/* <h6></h6> */}
           <TextField
             fullWidth
             label="Confirm Password"
             placeholder="Confirm Password"
-            variant="outlined"
+            // variant="outlined"
           />
           {/* //CheckBox insertions */}
-          {/* This h6 tag is for the spacing from top to bottom never delete it*/}
-          <h6></h6>
+          {/* This h6 tag is for the spacing from top to bottom never delete it
+          <h6></h6> */}
           <FormControlLabel
-            control={<Checkbox name="checkedA" style={checkboxStyle} />}
+            control={<Checkbox name="checkedA" />}
             label="I accept the terms and conditions"
           />
           <Button
             type="submit"
-            variant="contained"
+            // variant="contained"
             style={buttonStyle}
             fullWidth
           >

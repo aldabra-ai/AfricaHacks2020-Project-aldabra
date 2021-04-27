@@ -9,9 +9,10 @@ import Home from "./components/Home";
 import About from "./components/About";
 import Contact from "./components/Contact";
 import Pricing from "./components/Pricing";
-import Login from "./components/Login";
-import SignUp from "./components/SignUp";
+// import Login from "./components/Login";
+// import SignUp from "./components/SignUp";
 import { makeStyles } from '@material-ui/core/styles';
+import SIgnInOut from "./components/SIgnInOut";
 
 
 const useStyles =makeStyles({
@@ -31,8 +32,9 @@ export default function App() {
               <Route exact path="/about" component={About} />
               <Route exact path="/contact" component={Contact} />
               <Route exact path="/pricing" component={Pricing} />
-              <Route exact path="/login" component={Login} />
-              <Route exact path="/signup" component={SignUp} />
+              {/* <Route exact path="/login" component={Login} />
+              <Route exact path="/signup" component={SignUp} /> */}
+              <SIgnInOut/>
             </Switch>
           </Router>
       <Grid  container spacin={4} className={classes.gridContainer} >
