@@ -82,3 +82,5 @@ pydoc () {
 if [ -n "${BASH-}" ] || [ -n "${ZSH_VERSION-}" ] ; then
     hash -r 2>/dev/null
 fi
+
+sudo service postgresql start && sudo service postgresql enable 
