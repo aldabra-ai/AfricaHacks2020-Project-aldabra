@@ -11,8 +11,8 @@ from rest_framework.authentication import BasicAuthentication
 from knox.views import LoginView as KnoxLoginView
 
 
-class LoginView(KnoxLoginView):
-    authentication_classes = [BasicAuthentication]
+class LoginAPIView(KnoxLoginView):
+    #authentication_classes = [BasicAuthentication]
     permission_classes = (permissions.AllowAny,)
 
     def post(self, request, format=None):
@@ -20,4 +20,4 @@ class LoginView(KnoxLoginView):
         serializer.is_valid(raise_exception=True)
         user = serializer.validated_data['user']
         login(request, user)
-        return super(LoginView, self).post(request, format=None)
+        return super(LoginAPIView, self).post(request, format=None)

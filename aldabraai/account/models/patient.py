@@ -5,8 +5,9 @@ from django.shortcuts import reverse
 
 class Patient(models.Model):
     owner = models.OneToOneField(settings.AUTH_USER_MODEL, related_name='patient_profile', on_delete=models.CASCADE)
-    full_name = models.CharField('Full Name', max_length=150)
-    home_address = models.CharField('Home Address', max_length=200)
+    #profile_picture = models.ImageField('Profile Picture') 
+    full_name = models.CharField('Full Name', max_length=150, blank=True)
+    home_address = models.CharField('Home Address', max_length=200, blank=True)
     city = models.CharField(max_length=200)
     country = models.CharField(max_length=200)
     phone = models.CharField('Phone Number', max_length=20)

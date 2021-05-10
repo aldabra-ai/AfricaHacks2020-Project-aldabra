@@ -1,0 +1,47 @@
+
+{% extends 'index.html' %}
+{# Load the tag library #}
+{% load bootstrap5 %}
+
+{# Load CSS and JavaScript #}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
+{% load static %}
+
+{% block brand-name %}
+
+{% endblock %}
+
+
+{% block login-signup-btn %}
+
+{% endblock %}
+
+
+{% block jumbotron %}
+
+{% endblock %}
+
+{%block title %}Login{% endblock  %}
+
+{% block content  %}
+<link rel="stylesheet" href="{% static 'css/index.css' %}">
+<link rel="stylesheet" href="{% static 'css/reg.css' %}">
+
+<div class="card-container">
+    <div class="card" >
+    <h1 class='top-header'>Login</h1>
+    <form id="login_form" class="form" method="post" action="{% url 'login' %}">
+    {% csrf_token %} <!-- for security reasons -->
+    {% bootstrap_form login_form %} <!-- rendering form as paragraph -->
+    
+    {% buttons %}
+    <input type="submit" class="btn  btn-outline-info" value="Login">
+    {% endbuttons %}
+    </form>
+    <p style="text-align: center;"><a class="px-2 mx-2 btn btn-link text-decoration-none" href="{% url 'signup' %}">Not a Member?</a></p>
+
+    </div>
+</div>
+{% endblock %}

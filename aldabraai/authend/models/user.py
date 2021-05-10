@@ -13,7 +13,7 @@ class DoctorUserManager(models.Manager):
         return super().get_queryset().filter(profile_type='DR')
 class AldabraUserManager(BaseUserManager):
 
-    def create_user(self,email,identifier,date_of_birth,profile_type,password=None):
+    def create_user(self,email,password=None):
         """
         Creates and saves user with the given parameters:
         first_name,last_name,email,identifier,date_of_birth,profile_type,password.
@@ -23,32 +23,24 @@ class AldabraUserManager(BaseUserManager):
             raise  ValueError('User must have an email address, identifier and profile_type')
 
         user = self.model(
-            email=email,
-            identifier=identifier,
-            date_of_birth=date_of_birth,
-            profile_type=profile_type
+            email=self.normalize_email(email),
+            #identifier=identifier
             )  
         
         
         user.set_password(password)
-
-        if user.profile_type == 'DR':
-            user.is_patient = False
-            user.is_doctor = True
-            user.save(using=self._db)
+        user.save(using=self._db)
         return user
 
-    def create_superuser(self, email,identifier,date_of_birth,profile_type,password=None):
+    def create_superuser(self, email,password=None):
         """
         creates a superuser
         """
 
         user = self.create_user(
             email,
-            identifier=identifier,
-            date_of_birth=date_of_birth,
-            password=password,
-            profile_type=profile_type,
+            #identifier,
+            password=password
             )
 
         user.is_admin = True
@@ -56,28 +48,38 @@ class AldabraUserManager(BaseUserManager):
 
         return user
 
-class User(AbstractBaseUser):
 
-    PROFILE_TYPE = [
+
+
+PROFILE_TYPE = [
         ('PT', 'Patient'),
         ('DR', 'Doctor'),
     ]
 
+GENDER = [
+        ('M', 'Male'),
+        ('F', 'Female'),
+        ('RNS', 'Rather Not Say')
+    ]
+class User(AbstractBaseUser):
+
     first_name = models.CharField('First Name', max_length=200, blank=True)
     last_name = models.CharField('Last Name', max_length=200, blank=True)
-    date_of_birth = models.DateField('Date Of Birth', help_text='YYY-MMM-DDD')
-    identifier = models.CharField('Username', max_length=300, unique=True)
-    email = models.EmailField('Email Address', unique=True)
-    profile_type = models.CharField(max_length=10, choices=PROFILE_TYPE, default=PROFILE_TYPE[0])
+    date_of_birth = models.DateField('Date Of Birth', help_text='YYY-MMM-DDD', blank=True, null=True)
+    identifier = models.CharField('Username', max_length=300, unique=True, blank=True, null=True)
+    email = models.EmailField('Email', unique=True)
+    profile_type = models.CharField('Register as',max_length=10, choices=PROFILE_TYPE)
+    gender = models.CharField(max_length=7, choices=GENDER, default=GENDER[0][0])
 
-    user_id = models.UUIDField(blank=True)
+    user_id = models.UUIDField(blank=True, null=True)
 
+    #date_joined = models.DateTimeField(auto_created=True)
     last_login = models.DateTimeField(auto_now_add=True)
     is_active = models.BooleanField(default=True)
     is_admin = models.BooleanField(default=False)
 
     is_doctor = models.BooleanField(default=False)
-    is_patient = models.BooleanField(default=True)
+    is_patient = models.BooleanField(default=False)
 
     objects = AldabraUserManager()
 
@@ -86,13 +88,14 @@ class User(AbstractBaseUser):
 
     groups = models.ManyToManyField(Group, blank=True)
 
-    USERNAME_FIELD = 'identifier'
-    EMAIL_FIELD = 'email'
+    USERNAME_FIELD = 'email'
+    #EMAIL_FIELD = 'email'
 
-    REQUIRED_FIELDS = ['email','date_of_birth','profile_type']
+    REQUIRED_FIELDS = []
+
 
     def __str__(self):
-        return self.identifier
+        return self.first_name
     
     @property
     def full_name(self):

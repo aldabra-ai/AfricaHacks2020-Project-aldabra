@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load bootstrap5 %}
+    {% load static %}
+
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <title></title>
+</head>
+<body>
+    <div class="container-fluid">
+        <header>
+            {% block navbar %}
+            <nav class="simple-nav navbar">
+                {%block brand-name %} <a class="navbar-brand ">aldabra ai</a> {% endblock %}
+
+                {% block brand-image %}
+                    <img class="navbar-brand-img" src="{% static 'imgs/aldabra-brand.png' %}">
+                {% endblock %}
+
+                {% block login-signup-btn %}
+
+                <div class="signup-login-btn">
+                    <a href="{% url 'login' %}"><button class="login btn">Login</button></a>
+                    <a href="{% url 'signup' %}"><button class='join btn'>Sign up</button></a>
+                </div>
+
+                {% endblock %}
+            </nav>
+            {% endblock navbar %}
+            
+            {% block jumbotron %}
+            <div class="jumbotron">
+                <h1> Welcome </h1>
+            </div>
+            {% endblock jumbotron %}
+        </header>
+
+    {% block content %}
+
+    {% endblock content %}
+
+    {% block footer %}
+        <footer>
+
+        </footer>
+    {% endblock footer %}
+    </div>
+</body>
+</html>
+
+<script src="{% static 'style.js' %}" ></script>

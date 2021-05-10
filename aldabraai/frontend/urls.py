@@ -1,8 +1,13 @@
 from django.urls import path
-from .views import AppVIew
+
+from .views import (
+    home,
+    dashboard
+)
 
 app_name = 'frontend'
 
 urlpatterns = [
-    path('', AppVIew.as_view(), name='app-view')
+    path('', home, name='home'),
+    path('dashboard/', dashboard, name='dashboard')
 ]

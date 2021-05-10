@@ -16,6 +16,7 @@ apis = [
     path('appointments/', include('appointment.urls', namespace='appointments')),
     path('hospitals/', include('hospitaldb.urls', namespace='hospitals')),
     path('accounts/', include('account.urls', namespace='accounts')),
+    path('auth/', include('authend.urls')),
 ]
 
 urlpatterns = [
@@ -23,6 +24,6 @@ urlpatterns = [
     path('', include('frontend.urls', namespace='frontend')),
     # API ENTRY version one --> DONT PLAY WITH THIS OR WE LOSE DATA
     path('api/v1/', include(apis)),
-    path('api/auth/', include('authend.urls')),
     path('admin/', admin.site.urls),
+    path('auth/', include('authend.urls'))
 ]

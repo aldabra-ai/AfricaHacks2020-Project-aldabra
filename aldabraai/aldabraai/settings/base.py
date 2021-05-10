@@ -1,37 +1,12 @@
+from datetime import timedelta
+from rest_framework.settings import api_settings
 
 import os
 
-import json
+from .cfu import get_variable_or_secrete
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
-
-from django.core.exceptions import ImproperlyConfigured
-
-with open('secrets.json') as file:
-    secrets = json.loads(file.read())   
-
-    
-def get_variable_or_secrete(var_or_setting, secrets=secrets, limit_to_secret=False):
-    if limit_to_secret:
-        try:
-            return secrets[var_or_setting]
-        except KeyError:
-            error_msg = f'No secret named {var_or_setting}'
-            raise ImproperlyConfigured(error_msg)
-            
-    """Get the environment variable or return exception."""
-    try:
-        return os.environ[var_or_setting]
-    except KeyError:
-        print('***Unable to get environmental variable...\nTrying somethig else...***')
-       
-        try:
-            return secrets[var_or_setting]     
-        except KeyError:
-            error_msg = f'Set the {var_or_setting} environment variable'
-            raise ImproperlyConfigured(error_msg)
 
 
 # SECURITY WARNING: keep the secret key used in production secret!
@@ -76,14 +51,21 @@ INSTALLED_APPS = [
     ## THIRD PARTY APPS
     # API FRAMEWORK
     'rest_framework',
+    'corsheaders',
+
+    # icon library's
+    #'fontawesome-free',
+
+    # frontend framework
+    'bootstrap5',
 
     # AUTHORIZATION LIBRARY
     'knox',
 
-
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -92,6 +74,11 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+CORS_ORIGIN_ALLOW_ALL = False
+CORS_ORIGIN_WHITELIST = (
+       'http://localhost:3000',
+)
 
 ## REFRENCING USER MODEL
 AUTH_USER_MODEL = 'authend.User'
@@ -201,3 +188,80 @@ REST_FRAMEWORK = {
 }
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+REST_KNOX = {
+  'SECURE_HASH_ALGORITHM': 'cryptography.hazmat.primitives.hashes.SHA512',
+  'AUTH_TOKEN_CHARACTER_LENGTH': 64,
+  'TOKEN_TTL': timedelta(hours=5),
+  'USER_SERIALIZER': 'knox.serializers.UserSerializer',
+  'TOKEN_LIMIT_PER_USER': None,
+  'AUTO_REFRESH': False,
+  #'EXPIRY_DATETIME_FORMAT': api_settings.DATETME_FORMAT,
+}
+
+LOGIN_URL = '/auth/login/'
+
+from django.contrib.messages import constants as messages
+MESSAGE_TAGS = {
+    messages.INFO: '',
+    50: 'critical',
+}
+
+
+# Default bootstrap settings
+BOOTSTRAP5 = {
+
+    # The complete URL to the Bootstrap CSS file
+    # Note that a URL can be either a string,
+    # e.g. "https://stackpath.bootstrapcdn.com/bootstrap/5.1.1/css/bootstrap.min.css",
+    # or a dict like the default value below.
+    "css_url": {
+        "href": "https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css",
+        "integrity": "sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0",
+        "crossorigin": "anonymous",
+    },
+
+    # The complete URL to the Bootstrap JavaScript file
+    "javascript_url": {
+        "url": "https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.min.js",
+        "integrity": "sha384-lpyLfhYuitXl2zRZ5Bn2fqnhNAKOAaM/0Kr9laMspuaMiZfGmfwRNFh8HlMy49eQ",
+        "crossorigin": "anonymous",
+    },
+
+    # The complete URL to the Bootstrap CSS file (None means no theme)
+    "theme_url": None,
+
+    # Put JavaScript in the HEAD section of the HTML document (only relevant if you use bootstrap5.html)
+    'javascript_in_head': False,
+
+    # Label class to use in horizontal forms
+    'horizontal_label_class': 'col-md-3',
+
+    # Field class to use in horizontal forms
+    'horizontal_field_class': 'col-md-9',
+
+    # Set placeholder attributes to label if no placeholder is provided
+    'set_placeholder': True,
+
+    # Class to indicate required (better to set this in your Django form)
+    'required_css_class': '',
+
+    # Class to indicate error (better to set this in your Django form)
+    'error_css_class': 'is-invalid',
+
+    # Class to indicate success, meaning the field has valid input (better to set this in your Django form)
+    'success_css_class': 'is-valid',
+
+    # Renderers (only set these if you have studied the source and understand the inner workings)
+    'formset_renderers':{
+        'default': 'bootstrap5.renderers.FormsetRenderer',
+    },
+    'form_renderers': {
+        'default': 'bootstrap5.renderers.FormRenderer',
+    },
+    'field_renderers': {
+        'default': 'bootstrap5.renderers.FieldRenderer',
+        'inline': 'bootstrap5.renderers.InlineFieldRenderer',
+    },
+}

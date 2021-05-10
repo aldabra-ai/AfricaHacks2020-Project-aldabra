@@ -1,0 +1,29 @@
+
+{% extends 'index.html' %}
+{% load static %}
+
+{% block jumbotron %}
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+
+
+<div class="jumbotron">
+    <div class="j-text-container">
+        <h1>
+            Improve hospital efficiency, book appointments and
+            automate repetitive tasks.
+        </h1>
+        <a href="{% url 'signup' %}"><button class="btn">Start your journey</button></a>
+    </div>
+
+    <div class="j-img-container">
+        <img src="{% static 'imgs/ladydoc.svg' %}" alt="" style="width: 650px; height: 450px; max-width: 100%">
+        <!--<img src="{% static 'imgs/aldabra-brand.png' %}" style="width: 500px; height: 500px; max-width: 100%; padding: 1rem;">-->
+    </div>
+</div>
+
+{% endblock jumbotron %}
+
+{% block content %}
+
+{% endblock content %}
+

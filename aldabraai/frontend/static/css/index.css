@@ -1,0 +1,153 @@
+
+textarea:focus,
+select:focus,
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="datetime"]:focus,
+input[type="datetime-local"]:focus,
+input[type="date"]:focus,
+input[type="month"]:focus,
+input[type="time"]:focus,
+input[type="week"]:focus,
+input[type="number"]:focus,
+input[type="email"]:focus,
+input[type="url"]:focus,
+input[type="search"]:focus,
+input[type="tel"]:focus,
+input[type="color"]:focus,
+.uneditable-input:focus {   
+  box-shadow: .5px .5px .5px .5px #8c30f5ff inset, .5px .5px .5px .5px #8c30f5ff;
+  border: 1px solid #8c30f5ff;
+  outline: 1;
+}
+
+button:active,
+button:focus,
+.btn:active,
+.bnt:focus,
+.btn-outline:focus,
+.btn-outline-info:focus {
+    border-color: transparent;
+}
+
+.bnt:hover,
+.btn-outline:hover,
+.btn-outline-info:hover {
+    border-color: transparent;
+}
+
+
+
+.card {
+    border-color: rgba(116, 114, 114, 0.1);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(116, 114, 114, 0.1);
+}
+
+.form-control:hover {
+    border-color: #8c30f5ff;
+}
+
+
+a,h1,h2,h3,h4,h5,h6,p{
+    font-weight: bold;
+} 
+
+html, 
+body{
+    width: 100%;
+    margin-left: 0;
+}
+
+.container-fluid {
+    width: 100%;
+    margin: 0;
+    padding-left: 0;
+}
+
+html:not([data-scroll='0']) body {
+    padding-top: 3em;
+  }
+  
+html:not([data-scroll='0']) .simple-nav {
+    position: fixed;
+    top: 0;
+    background-color: #fff;
+    box-shadow: 0 0 1em 0 rgba(116, 114, 114, 0.1);
+    /*z-index: 1030;*/
+}
+
+
+
+.simple-nav {
+	width: 100%;
+	margin: 0;
+	-webkit-transition: background-color .5s;
+	transition: background-color .5s;
+}
+
+.navbar-brand {
+    float: left;
+    text-decoration: none;
+    font-size: 25px;
+    margin-left: .5rem;
+    text-decoration: none;
+    color: #8c30f5ff;
+    font-weight: bolder;
+}
+
+
+.simple-nav img {
+    text-align: center;
+}
+
+.navbar-brand-img {
+    box-sizing: border-box;
+    width: 40px;
+    height: 40px;
+    align-self: center;
+    padding: .1rem;
+}
+
+.signup-login-btn {
+    float: right;
+}
+
+.login,
+.join {
+    display: inline;
+    margin-right: .1rem;
+}
+
+.signup-login-btn a {
+    text-decoration: none;
+}
+
+.signup-login-btn .join, .join {
+    background-color: #8c30f5ff;
+    color: white;
+}
+
+.signup-login-btn .join a {
+    color: white;
+}
+
+.signup-login-btn .join:hover{
+    opacity: .8;
+    border-color: transparent;
+}
+
+.signup-login-btn .login {
+    background-color: transparent;
+    border: 1px solid #e79bffff;
+    color: #e79bffff;
+}
+
+.signup-login-btn .login a {
+    color: #8c30f5ff;
+}
+
+.signup-login-btn .login:hover {
+    background-color: #e79bffff;
+    border-color: transparent;
+    color: white;
+}

@@ -7,6 +7,7 @@ from rest_framework import (
     )
 from rest_framework.generics import mixins
 from rest_framework.response import Response
+from rest_framework.permissions import IsAuthenticated
 from rest_framework.decorators import (
     action, 
     api_view
@@ -143,6 +144,7 @@ class DoctorSpecializationAPI(CreateUpdateRetrieveViewset):
 
 
 class PatientProfileAPIView(viewsets.ModelViewSet):
+    permission_classes = [IsAuthenticated]
     queryset = Patient.objects.all()
     serializer_class = PatientDetailSerializer
     lookup_field = 'slug'

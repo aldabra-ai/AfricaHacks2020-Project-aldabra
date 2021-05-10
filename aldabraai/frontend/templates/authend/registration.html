@@ -1,0 +1,48 @@
+
+{% extends 'index.html' %}
+{# Load the tag library #}
+{% load static %}
+{% load bootstrap5 %}
+
+{# Load CSS and JavaScript #}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
+{% block brand-name %}
+
+{% endblock %}
+
+
+{% block login-signup-btn %}
+
+{% endblock %}
+
+
+{% block jumbotron %}
+
+{% endblock %}
+
+
+{%block title %}Register{% endblock  %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/index.css' %}">
+<link rel="stylesheet" href="{% static 'css/reg.css' %}">
+<div class="card-container">
+    <div class="card reg-card">
+        <h1 class="top-header">Register</h1>
+    {% if registered %}
+        <strong>Thank You for Registering with Us.</strong>
+        <a href="{% url 'home' %}" class="btn-link btn">Return to the HomePage</a><br>
+    {% else %}
+        <form action="{% url 'signup' %}" class="pt-3" method="POST">
+            {% csrf_token %}
+            {{ register_form.as_p }}
+            <input type="submit" name="submit" value="Register" class="join btn">
+            <p class="p-2 m-1">Already a Member? <a href="{% url 'login' %}">Sign In Here...</a></p>
+        </form>
+    </div>
+</div>
+    {% endif %}
+    </div>
+{% endblock %}

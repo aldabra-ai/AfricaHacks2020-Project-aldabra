@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="/add-patient/" method="POST">
+        {% csrf_token %}
+        <label for="full_name">Full Name</label> <input name="full_name" type="text">
+        <label for="homme_address">Home Address</label><input name="home_address" type="text">
+        <label for="city">City</label><input name="city" type="text">
+        <label for="country">Country</label><input name="country" type="text">
+        <label for="phone">Phone</label><input name="phone" type="number">
+        <button type="submit">submit</button>
+    </form>
+</body>
+</html>
