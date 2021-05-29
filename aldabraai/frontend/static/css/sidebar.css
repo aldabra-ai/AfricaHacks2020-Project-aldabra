@@ -1,0 +1,39 @@
+
+.left-s-bar .bar-icon {
+    width: 40px;
+    height: 40px;
+}
+
+.left-s-bar {
+    margin: 0 .5rem;
+}
+
+
+.bar-link {
+    border-radius: 10px;
+    transition: 1.5s;
+}
+
+.bar-link:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 1rem 0 rgba(116, 114, 114, 0.1);
+}
+
+.left-s-bar {
+    flex: .15;
+}
+
+.left-s-bar {
+    display: flex;
+    padding: .2rem;
+    flex-direction: column;
+    justify-content: space-around;
+    text-align: center;
+    height: auto;
+    background-color:rgba(116, 114, 114, 0.1);
+    margin-left: .5rem;
+    align-content: center;
+    border-radius: 10px;
+    position: static;
+    float: left;
+}

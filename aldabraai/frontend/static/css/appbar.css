@@ -1,0 +1,56 @@
+.appbar {
+    display: flex;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    box-sizing: content-box !important;
+    margin: 0 auto;
+    width: 100%;
+    padding: .5rem;
+ }
+ 
+ .brand-space {
+     display: flex;
+     position: relative;
+ }
+ 
+ .appbar .brand-logo {
+     width: 40px;
+     height: 40px;
+     border-radius: 50%;
+ }
+ 
+ .brand-name {
+     font-size: 20px;
+     margin: .5rem;
+ }
+ 
+ .search-box {
+     -webkit-box-flex: 1;
+     flex-grow: .4;
+     float: left;
+ }
+ 
+ .search-box-x {
+     display: flex;
+     position: relative;
+ }
+ 
+ 
+ .user-space {
+     display: flex;
+     position: relative;
+     justify-content: space-evenly;
+ }
+ 
+ .user-space img {
+     margin: .5rem;
+     margin-right: .6rem;
+     margin-top: .1rem;
+     width: 40px;
+     height: 40px;
+     max-width: 100%;
+     padding: .5px;
+     border-radius: 40px;
+     /* border: 1px solid purple; */
+ }
+ 

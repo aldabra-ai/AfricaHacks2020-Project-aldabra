@@ -38,6 +38,17 @@ button:focus,
 
 
 
+input[type="search"]:focus{
+    box-shadow: .5px .5px .5px .5px #8c30f5ff inset, .5px .5px .5px .5px #8c30f5ff;
+    border: 1px solid #8c30f5ff;
+    outline: 1;  
+}
+
+input[type=search]:hover {
+    border-color: #8c30f5ff;
+}
+
+
 .card {
     border-color: rgba(116, 114, 114, 0.1);
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(116, 114, 114, 0.1);

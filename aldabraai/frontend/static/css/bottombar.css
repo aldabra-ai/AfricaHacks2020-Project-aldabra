@@ -1,0 +1,34 @@
+
+.bar-bottom .bar-icon {
+    width: 40px;
+    height: 40px;
+}
+
+.bar-link {
+    border-radius: 10px;
+    transition: 1.5s;
+}
+
+.bar-link:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 1rem 0 rgba(116, 114, 114, 0.1);
+}
+
+.bar-box-bottom {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.bar-bottom {
+    position: fixed;
+    margin-left: 0;
+    padding: 0;
+    height: 40px;
+    width: 100%;
+    box-sizing: border-box;
+    bottom: 0;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0 0 1em 0 rgba(116, 114, 114, 0.1);
+}

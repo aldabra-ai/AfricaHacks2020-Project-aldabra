@@ -167,22 +167,7 @@ def get_appointment(request, appointment_id):
     appointment = Appointment.objects.get(appointment_id=appointment_id)
     return appointment
 
-#@sync_to_async()
-async def appointment_timer(request, appointment_id):    
 
-    appointment = sync_to_async(get_appointment)
-    now = timezone.now()
 
-    appointment_date = appointment.appointment_date
-    appointment_time = appointment.appointment_time
+    
 
-    if appointment_date != now.date:
-        date = now + appointment_date
-    seconds = (appointment_time.hour * 60 + appointment_time.minute) * 60 + appointment_time.second
-
-    date_seconds = date.total_seconds()
-
-    total_seconds = date_seconds + seconds
-
-    asyncio.sleep(total_seconds)
-    return redirect()

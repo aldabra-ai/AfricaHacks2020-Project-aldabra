@@ -21,6 +21,12 @@ from django.shortcuts import (
 @login_required()
 def dashboard(request):
     user = request.user
+
+    template_name = ''
+    context = {
+        
+    }
+
     if user.is_patient:
         template_name = 'dashboards/patient_dashboard.html'
 
@@ -28,14 +34,12 @@ def dashboard(request):
             
         }
 
-        return render(request, template_name, context)
-
-
     elif user.is_doctor:
         template_name = 'dashboards/doctor_dashboard.html'
         
         context = {
 
         }
+        
+    return render(request, template_name, context)
 
-        return render(request, template_name, context)

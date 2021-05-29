@@ -16,6 +16,7 @@
 </head>
 <body>
     <div class="container-fluid">
+        {% block container %}
         <header>
             {% block navbar %}
             <nav class="simple-nav navbar">
@@ -52,6 +53,8 @@
 
         </footer>
     {% endblock footer %}
+
+    {% endblock container%}
     </div>
 
     <script src="{% static 'style.js' %}" ></script>

@@ -32,7 +32,7 @@ def userLoginView(request):
     # first check if user id logged in, if true redirect home
     user = request.user
     if user.is_authenticated:
-        return redirect('/home/')
+        return redirect('frontend:dashboard')
 
     if request.POST:
         login_form = LoginForm(request.POST)
@@ -46,7 +46,7 @@ def userLoginView(request):
 
         if user is not None:
             login(request, user)
-            return redirect('dashboard')
+            return redirect('frontend:dashboard')
         else:
             messages.error(request,"Email or Password Incorrect")
 

@@ -1,0 +1,173 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block container %}
+<link rel="stylesheet" href="{% static 'css/appbar.css' %}">
+<link rel="stylesheet" href="{% static 'css/sidebar.css' %}">    
+<link rel="stylesheet" href="{% static 'css/c_box.css' %}">
+<link rel="stylesheet" href="{% static 'css/bottombar.css' %}">
+<link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+<link rel="stylesheet" href="{% static 'css/screensize.css' %}">
+
+{% block app-bar %}
+
+<header class="appbar">
+    <div class="brand-space">
+        {% block brand %}
+        <img class='brand-logo' src="{% static 'imgs/aldabra-brand.png' %}" alt="">
+        {% endblock brand %}
+    </div>
+
+    {% block search-box %}
+    <form action="" class="search-box search-box-x">
+        {% csrf_token %}
+        <input class='form-control' type="search" placeholder='Search' aria-label="Search">
+    </form>
+    {% endblock %}
+
+    {% block user-space %}
+    <div class='user-space'>
+        <img src="{% static 'imgs/female-user.jpg' %}" alt="" class='user'>
+    </div>
+    {% endblock %}
+</header>
+{% endblock app-bar %}
+
+<div class="main">
+{% block sidebar %}
+<div class="left-s-bar bar-box">
+    {% block sidebar-links %}
+    <a class='bar-link' href=""><img class='bar-icon' src="{% static 'imgs/x-box.svg' %}" alt=""></a>
+    <a class='bar-link' href=""><img class='bar-icon' src="{% static 'imgs/x-box.svg' %}" alt=""></a>
+    <a class='bar-link' href=""><img class='bar-icon' src="{% static 'imgs/x-box.svg' %}" alt=""></a>
+    <a class='bar-link' href=""><img class='bar-icon' src="{% static 'imgs/x-box.svg' %}" alt=""></a>
+    <a class='bar-link' href=""><img class='bar-icon' src="{% static 'imgs/x-box.svg' %}" alt=""></a>
+    <a class='bar-link' href=""><img class='bar-icon' src="{% static 'imgs/x-box.svg' %}" alt=""></a>
+    <a class='bar-link' href=""><img class='bar-icon' src="{% static 'imgs/x-box.svg' %}" alt=""></a>
+    {% endblock %}
+</div>
+{% endblock %}
+
+<div class="f-area">
+{% block content-box %}
+    <div class="card c-box">
+        <div class='c-u-space'>   
+            {% block user-image %} 
+            <img src="{% static 'imgs/male-user.jpg' %}" alt="">
+            {% endblock user-image %}
+
+            {% block user-name %}
+            <h5>User Name</h5>
+            {% endblock user-name %}
+        </div>
+
+        <div class="c-v-space">
+            {% block post-image %}
+            <img class='c-p-img' {% block img-source %}src="{% static 'imgs/health1.jpg' %}" {% endblock %} alt="">
+            {% endblock post-image %}
+
+            {% block post-video %}
+            {% endblock post-video %}
+        </div>
+
+        {% block post-infos %}
+        <div class="c-p-info">
+            {% block post-reach %}
+            <h5 class="i-left p-reach">100k likes</h5>
+            {% endblock post-reach %}
+
+            {% block like-icon %}
+            <img class="i-center p-fav" src="{% static 'imgs/x-box.svg' %}" alt="">
+            {% endblock like-icon %}
+
+            {% block ss-icon %}
+            <div class='i-rigth'>
+                <img class="p-share" src="{% static 'imgs/x-box.svg' %}" alt="">
+                <img class="p-save" src="{% static 'imgs/x-box.svg' %}" alt="">
+            </div>
+            {% endblock ss-icon %}
+        </div>
+        {% endblock post-infos %}
+
+        {% block post-text %}
+        <div class="c-p-text">
+
+            <h1>{% block post-title %}Title Goes Here...{% endblock post-title %}</h1>
+
+            {% block post-paras %}
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ducimus ipsa impedit numquam quos ex perferendis doloribus recusandae...</p>
+            {% endblock post-paras %}
+        </div>
+        {% endblock post-text %}
+    </div>
+{% endblock content-box %}
+</div>
+
+{% block add-appointment-icon %}
+    <div class="add-icon">
+        <a href="#"><img src="{% static 'imgs/x-box.svg' %}" alt=""></a> 
+    </div>
+{% endblock %}
+
+{% block right-dashboard %}
+        <aside class='right-s-dashboard sd-box'>
+            {% block appointment-table %}
+            <div class='card sd-card sd-card-1'>
+                <table >
+                    <tbody>
+                        <p class='title'>{% block app-table-title %} Upcoming Appointments {% endblock app-table-title %}</p>
+
+                        <tr>
+                            <th>with</th>
+                            <th>Date</th>
+                            <th>Time</th>
+                        </tr>
+
+                        <tr class='appt-data'>
+                            <td>{% block doctor-name %}Dr. Rufus Sinclad{% endblock %}</td>
+                            <td>{% block appointment-date %}May 12{% endblock %}</td>
+                            <td>{% block appointment-time %}15:00 pm{% endblock %}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            {% endblock appointment-table %}
+
+            <form action="" class='card sd-card sd-card-2'>
+                <h6 style="margin-bottom: 5px; text-align: center; color: #8c30f5ff;"> Join a queue</h6>
+                <input  class='form-control' type="text" name="name" id="" placeholder="your name">
+
+                <input type="number" name="phone-number" placeholder="your phone number" class="form-control">
+
+                <select name="queuing-for" id="" placeholder="queuing for?" class='form-control form-select'>
+                    <option value="something">something</option>
+                    <option value="something">something</option>
+                    <option value="something">something</option>
+                </select>
+                
+                <select name="importance" id="" aria-placeholder="importance" class='form-control form-select'>
+                    <option value="something">Minimal</option>
+                    <option value="something">Emergency</option>
+                </select>
+
+                <input type="button" value="join" class="btn">
+
+            </div>
+        </aside>
+{% endblock right-dashboard %}
+
+
+{% block bottom-nav %}
+<div class='bar-bottom bar-box-bottom'>
+    {% block bottmobar-links %}
+    <a class='bar-link' href=""><img class='bar-icon' src="{% static 'imgs/x-box.svg' %}" alt=""></a>
+    <a class='bar-link' href=""><img class='bar-icon' src="{% static 'imgs/x-box.svg' %}" alt=""></a>
+    <a class='bar-link' href=""><img class='bar-icon' src="{% static 'imgs/x-box.svg' %}" alt=""></a>
+    <a class='bar-link' href=""><img class='bar-icon' src="{% static 'imgs/x-box.svg' %}" alt=""></a>
+    <a class='bar-link' href=""><img class='bar-icon' src="{% static 'imgs/x-box.svg' %}" alt=""></a>
+    {% endblock %}
+</div>
+{% endblock %}
+</div>
+
+{% endblock container %}

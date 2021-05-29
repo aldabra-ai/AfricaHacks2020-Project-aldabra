@@ -58,7 +58,7 @@ def registrationView(request):
             user = authenticate(email=data['email'], password=data['raw_password'])
             login(request, user)
             messages.success(request, "Hold On Tight")
-            return redirect('dashboard')
+            return redirect('frontend:dashboard')
     
         else:
             messages.error(request, "Please Correct Errors")

@@ -1,0 +1,26 @@
+{% load static %}
+
+{% block app-bar %}
+<link rel="stylesheet" href="{% static 'css/appbar.css' %}">
+
+<header class="appbar">
+    <div class="brand-space">
+        {% block brand %}
+        <img class='brand-logo' src="" alt="">
+        {% endblock brand %}
+    </div>
+
+    {% block search-box %}
+    <form action="" class="search-box search-box-x">
+        {% csrf_token %}
+        <input class='form-control' type="search" placeholder='Search' aria-label="Search">
+    </form>
+    {% endblock %}
+
+    {% block user-space %}
+    <div class='user-space'>
+        <img src="" alt="" class='user'>
+    </div>
+    {% endblock %}
+</header>
+{% endblock app-bar %}

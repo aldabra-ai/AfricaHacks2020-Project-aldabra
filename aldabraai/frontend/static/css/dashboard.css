@@ -1,0 +1,227 @@
+
+html,
+body {
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
+
+
+textarea:focus,
+select:focus,
+.form-select:focus,
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="datetime"]:focus,
+input[type="datetime-local"]:focus,
+input[type="date"]:focus,
+input[type="month"]:focus,
+input[type="time"]:focus,
+input[type="week"]:focus,
+input[type="number"]:focus,
+input[type="email"]:focus,
+input[type="url"]:focus,
+input[type="search"]:focus,
+input[type="tel"]:focus,
+input[type="color"]:focus,
+.uneditable-input:focus {   
+  box-shadow: .5px .5px .5px .5px #8c30f5ff inset, .5px .5px .5px .5px #8c30f5ff;
+  border: 1px solid #8c30f5ff;
+  outline: 1;
+}
+
+
+.form-control {
+    margin: .5rem 1rem inherit 0;
+    margin-bottom: 1rem;
+    border-radius: 5px;
+}
+
+html:not([data-scroll='0']) body {
+    padding-top: 2em;
+  }
+
+  
+html:not([data-scroll='0']) .appbar {
+    position: fixed;
+    top: 0;
+    background-color: #fff;
+    box-shadow: 0 0 1rem 0 rgba(116, 114, 114, 0.1);
+    z-index: 1030;
+}
+
+.main {
+    display: flex;
+    margin: 0rem 0;
+    padding: .5rem .0rem;
+}
+
+.f-area,
+.right-s-dashboard {
+    margin: 0 .5rem;
+}
+
+.left-s-bar {
+    flex: .15;
+}
+
+.f-area {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    flex: 2;
+    overflow-y: auto;
+    height: 87.5vh;
+    margin: 0 1rem;
+    margin-right: 0;
+    padding: 0px 20px;
+    padding-right: 10px;
+
+}
+
+
+.f-area::-webkit-scrollbar {
+    width: 5px;
+    height: 20px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 30px;
+    margin-top: 5px;
+}
+
+.f-area::-webkit-scrollbar-thumb {
+    background-color: #e79bffff;
+    height: 10%;
+    border-radius: 10px;
+}
+
+
+.right-s-dashboard {
+    display: flex;
+    flex-direction: column;
+    flex: 1.5;
+    position: static;
+    height: 85vh;
+}
+
+.bar-box,
+.card {
+    background-color: #fff;
+    box-shadow: 0 0 1em 0 rgba(116, 114, 114, 0.1);
+    margin: 20px;
+}
+
+.card {
+    border-radius: 20px;
+
+}
+
+.bar-box-bottom {
+    display: none;
+}
+
+.sd-card {
+    box-sizing: content-box;
+    display: block;
+    height: 200px;
+    margin-bottom: 1rem;
+    margin-right: 1rem;
+    border-radius: 10px;
+    position: static;
+
+}
+
+.sd-card-1 {
+    height: 190px;
+    padding: 1px;
+    border-radius: 5px;
+    margin-bottom: .5rem;
+
+}
+
+.sd-card-1 .title{
+    text-align: center;
+    color: #8c30f5ff;
+    text-transform: capitalize;
+    font-weight: thin;
+    margin-bottom: 10px;
+}
+
+.sd-card-2 {
+    margin-top: .5rem;
+    margin-bottom: .5rem;
+    height: 280px;
+    padding: 10px;
+    padding-bottom: 5px;
+}
+
+
+
+.sd-card-1 table {
+    border-collapse: collapse;
+    width: 100%;
+    color: #e79bffff;
+    font-size: 14.5px;
+    font-weight: 400;
+    border-radius: 30px;
+    margin-top: 5px;
+}
+
+.sd-card-1 th {
+    padding-bottom: 5.5px;
+    text-transform: uppercase;
+    padding: 5px;
+}
+
+.sd-card-1 td {
+    border: 1rem #dddddd;
+    text-align: left;
+    padding: 5px;
+    border-radius: 3px;
+}
+
+.sd-card-1 tr {
+    transition: 1s;
+    box-shadow: 0 0 .35rem 0 #e79bffff;
+    border-radius: 3px;
+    background-color: rgb(253, 253, 253);
+}
+
+.sd-card-1 tr:nth-child(even) {
+    background-color: #e79bffff;
+    color: white;
+    box-shadow: 0 0 .35rem 0 #e79bffff;
+}
+
+
+.sd-card-1 .appt-data:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 .5rem 0 #e79bffff;
+}
+
+
+.sd-card-2 .btn a {
+    text-decoration: none;
+}
+
+.sd-card-2 .join-queue, 
+.sd-card-2 .btn {
+    background-color: #8c30f5ff;
+    color: white;
+}
+
+.join-queue a {
+    color: white;
+}
+
+.join-queue:hover{
+    opacity: .8;
+    border-color: transparent;
+}
+
+.form-control:hover {
+    border: 1px solid;
+    border-color: #8c30f5ff;
+}
+
+.add-icon {
+    display: none;
+}

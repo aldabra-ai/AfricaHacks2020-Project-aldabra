@@ -1,0 +1,92 @@
+
+
+.c-box {
+    display: flex;
+    flex-direction: column;
+    box-sizing: content-box;
+    border-radius: 5px !important;
+    padding: 10px;
+    margin-bottom: 0rem;
+}
+
+.c-box .c-u-space {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    margin: 1px;
+    padding: 5px 10px;
+}
+
+.c-u-space img {
+    width: 35px;
+    height: 35px;
+    border-radius: 50px;
+    padding: 1px;
+    margin-right: 10px;
+}
+
+.c-u-space h5 {
+    padding-top: 5px;
+}
+
+.c-box .c-v-space {
+    margin: 0;
+    box-sizing: content-box;
+    width: 100%;
+    height: auto;
+    align-items: center;
+    text-align: center;
+    border-top: 1px solid;   
+    border-bottom: 1px solid;
+}
+
+.c-p-img,
+.c-p-vid {
+    width: fit-content;
+    height:auto;
+    max-width: 100%;
+    padding: 1px;
+    position: center;
+}
+
+.c-box .c-p-info {
+    display: flex;
+    flex-direction: row;
+    margin: 0;
+    padding: 1px 5px;
+    justify-content: space-between;
+    border-bottom: 1px solid;
+}
+
+.c-p-info img {
+    width: 25px;
+    height: 25px;
+}
+
+.i-left {
+    align-self: flex-start;
+}
+
+.i-center {
+    align-self: center;
+}
+
+.i-right {
+    align-self: flex-end;
+}
+
+.p-reach,
+.p-share,
+.p-save {
+    margin-top: 10px;
+}
+
+
+.c-box .c-p-text {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    justify-content: left;
+    margin: 0;
+    padding: 5px 10px;
+}

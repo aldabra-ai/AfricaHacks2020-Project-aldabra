@@ -1,0 +1,11 @@
+{% load static %}
+
+
+{% block bottom-nav %}
+<link rel="stylesheet" href="{% static 'css/bottombar.css' %}">
+<div class='bar-bottom bar-box-bottom'>
+    {% block links %}
+    <a class='bar-link' href=""><img class='bar-icon' src="./imgs/x-box.svg" alt=""></a>
+    {% endblock %}
+</div>
+{% endblock %}
