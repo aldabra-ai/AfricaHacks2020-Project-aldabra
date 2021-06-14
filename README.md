@@ -19,9 +19,9 @@
   ````
   
   ## For Linux(Ubuntu)
-    chmod 7 envset.sh
-    
+    ```
     ./envset
+    ````
     
  ## Database setup
   ## Windows
@@ -45,11 +45,9 @@
   ````
   
   ## Linux(Ubuntu)
-  ````
-  chmod 7 runsever.sh
-  
+  ```
   ./runserver
-  ````
+  ```
   
 ## React Frontend
    the react frontend was manually integrated into the django application
