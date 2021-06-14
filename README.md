@@ -1,4 +1,4 @@
-# AfricaHacks2020-Project-aldabra (Aldabra Public Repo, This no longer managed)
+# AfricaHacks2020-Project-aldabra (Aldabra Public Repo, This is no longer managed)
 
 ## Virtual environment setup
   ## For Windows  
